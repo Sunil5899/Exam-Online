@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Examination Portal</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,"Noto Sans",sans-serif;
+background:
+radial-gradient(circle at top left,#dbeafe,transparent 35%),
+radial-gradient(circle at bottom right,#e0e7ff,transparent 35%),
+#eef2f7;
+color:#172033;
+min-height:100vh;
+}
+
+.topbar{
+background:#0b1f3a;
+color:#fff;
+padding:14px 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:45px;
+height:45px;
+border-radius:12px;
+background:linear-gradient(145deg,#2563eb,#1d4ed8);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:23px;
+}
+
+.brand h2{
+margin:0;
+font-size:19px;
+}
+
+.brand span{
+font-size:12px;
+color:#cbd5e1;
+}
+
+.wrapper{
+max-width:1050px;
+margin:35px auto;
+padding:0 18px;
+}
+
+.card{
+background:#fff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 20px 45px rgba(15,23,42,.15);
+}
+
+.hero{
+padding:30px 35px;
+background:linear-gradient(110deg,#0f3d75,#155eaa,#2563eb);
+color:white;
+}
+
+.hero h1{
+margin:0 0 7px;
+font-size:29px;
+}
+
+.hero p{
+margin:0;
+color:#dbeafe;
+font-size:14px;
+}
+
+.content{
+padding:30px 35px 35px;
+}
+
+.section{
+margin-bottom:28px;
+}
+
+.section-title{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:20px;
+padding-bottom:11px;
+border-bottom:1px solid #e2e8f0;
+}
+
+.section-number{
+width:32px;
+height:32px;
+border-radius:9px;
+background:#eaf2ff;
+color:#1d4ed8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.section-title h3{
+margin:0;
+font-size:17px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:700;
+margin-bottom:7px;
+color:#334155;
+}
+
+.required{
+color:#dc2626;
+}
+
+input,select,textarea{
+width:100%;
+border:1px solid #cbd5e1;
+background:#fff;
+border-radius:10px;
+padding:12px 13px;
+font-size:14px;
+color:#172033;
+outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+textarea{
+min-height:90px;
+resize:vertical;
+}
+
+.readonly{
+background:#f8fafc;
+}
+
+.declaration{
+padding:15px 17px;
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:11px;
+font-size:13px;
+line-height:1.6;
+}
+
+.declaration input{
+width:auto;
+margin-right:7px;
+}
+
+.primary-btn{
+width:100%;
+margin-top:22px;
+padding:15px;
+border:none;
+border-radius:11px;
+background:linear-gradient(135deg,#1d4ed8,#2563eb);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 6px 0 #173ea5;
+}
+
+.primary-btn:active{
+transform:translateY(4px);
+box-shadow:0 2px 0 #173ea5;
+}
+
+.primary-btn:disabled{
+opacity:.65;
+cursor:not-allowed;
+}
+
+.hidden{
+display:none!important;
+}
+
+.message{
+margin-top:20px;
+padding:18px;
+border-radius:13px;
+text-align:center;
+}
+
+.success{
+background:#ecfdf5;
+border:1px solid #a7f3d0;
+color:#065f46;
+}
+
+.error{
+background:#fef2f2;
+border:1px solid #fecaca;
+color:#991b1b;
+}
+
+.credentials{
+max-width:430px;
+margin:20px auto;
+background:#fff;
+border:1px solid #d1fae5;
+border-radius:14px;
+padding:18px;
+}
+
+.credential-item{
+margin:10px 0;
+padding:12px;
+background:#f1f5f9;
+border-radius:9px;
+}
+
+.credential-label{
+display:block;
+font-size:12px;
+color:#64748b;
+}
+
+.credential-value{
+font-size:19px;
+font-weight:bold;
+color:#1d4ed8;
+letter-spacing:1px;
+}
+
+.login-card{
+max-width:480px;
+margin:0 auto;
+padding:10px 0;
+}
+
+.login-icon{
+width:65px;
+height:65px;
+margin:0 auto 14px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:31px;
+color:white;
+background:linear-gradient(145deg,#2563eb,#1d4ed8);
+box-shadow:0 10px 20px rgba(37,99,235,.25);
+}
+
+.login-title{
+text-align:center;
+font-size:25px;
+margin:0;
+}
+
+.login-subtitle{
+text-align:center;
+color:#64748b;
+font-size:13px;
+margin:8px 0 24px;
+}
+
+.captcha-row{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.captcha-box{
+height:47px;
+min-width:155px;
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+linear-gradient(135deg,#e0e7ff,#dbeafe);
+border-radius:9px;
+font-size:21px;
+font-weight:bold;
+letter-spacing:5px;
+color:#1e3a8a;
+user-select:none;
+}
+
+.refresh{
+width:47px;
+height:47px;
+border:none;
+border-radius:9px;
+background:#e2e8f0;
+font-size:21px;
+cursor:pointer;
+}
+
+.dashboard{
+max-width:700px;
+margin:0 auto;
+text-align:center;
+}
+
+.welcome{
+font-size:27px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.dashboard-sub{
+color:#64748b;
+margin-bottom:25px;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:13px;
+text-align:left;
+}
+
+.info-box{
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:11px;
+padding:15px;
+}
+
+.info-label{
+font-size:11px;
+color:#64748b;
+}
+
+.info-value{
+font-weight:bold;
+margin-top:5px;
+}
+
+.start-btn{
+margin-top:25px;
+width:100%;
+padding:16px;
+border:none;
+border-radius:11px;
+background:linear-gradient(135deg,#059669,#10b981);
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 6px 0 #047857;
+}
+
+.footer{
+text-align:center;
+padding:18px;
+font-size:12px;
+color:#64748b;
+}
+
+@media(max-width:700px){
+
+.topbar{
+padding:12px 18px;
+}
+
+.wrapper{
+margin:15px auto;
+padding:0 10px;
+}
+
+.hero{
+padding:24px 20px;
+}
+
+.hero h1{
+font-size:23px;
+}
+
+.content{
+padding:23px 18px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.full{
+grid-column:auto;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="logo">🎓</div>
+
+<div>
+<h2>Online Examination Portal</h2>
+<span>Candidate Registration & Login</span>
+</div>
+
+</div>
+
+<div>🔒 Secure</div>
+
+</header>
+
+
+<div class="wrapper">
+
+<div class="card">
+
+<div class="hero">
+
+<h1>Online Examination Portal</h1>
+
+<p id="heroText">
+Candidate Registration
+</p>
+
+</div>
+
+
+<div class="content">
+
+
+<!-- ================= REGISTRATION ================= -->
+
+<section id="registrationSection">
+
+<div class="section">
+
+<div class="section-title">
+
+<div class="section-number">1</div>
+
+<h3>Personal Details</h3>
+
+</div>
+
+
+<div class="grid">
+
+
+<div>
+
+<label>
+Candidate Name <span class="required">*</span>
+</label>
+
+<input
+id="name"
+type="text"
+placeholder="Enter candidate name"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+Father's Name <span class="required">*</span>
+</label>
+
+<input
+id="fatherName"
+type="text"
+placeholder="Enter father's name"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+Date of Birth <span class="required">*</span>
+</label>
+
+<input
+id="dob"
+type="date"
+required>
+
+</div>
+
+
+<div>
+
+<label>Age</label>
+
+<input
+id="age"
+class="readonly"
+type="number"
+placeholder="Auto calculated"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Gender <span class="required">*</span>
+</label>
+
+<select id="gender" required>
+
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Category <span class="required">*</span>
+</label>
+
+<select id="category" required>
+
+<option value="">Select Category</option>
+<option>General</option>
+<option>OBC</option>
+<option>SC</option>
+<option>ST</option>
+<option>EWS</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">
+
+<div class="section-number">2</div>
+
+<h3>Qualification</h3>
+
+</div>
+
+
+<div>
+
+<label>
+Highest Qualification <span class="required">*</span>
+</label>
+
+<select id="qualification" required>
+
+<option value="">Select Qualification</option>
+<option>10th</option>
+<option>12th</option>
+<option>UG</option>
+<option>PG</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">
+
+<div class="section-number">3</div>
+
+<h3>Contact & Address</h3>
+
+</div>
+
+
+<div class="grid">
+
+
+<div>
+
+<label>
+Mobile Number <span class="required">*</span>
+</label>
+
+<input
+id="mobile"
+type="tel"
+maxlength="10"
+placeholder="10 digit mobile number"
+required>
+
+</div>
+
+
+<div>
+
+<label>Email ID</label>
+
+<input
+id="email"
+type="email"
+placeholder="example@gmail.com">
+
+</div>
+
+
+<div>
+
+<label>
+District <span class="required">*</span>
+</label>
+
+<input
+id="district"
+type="text"
+placeholder="Enter district"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+State <span class="required">*</span>
+</label>
+
+<select id="state" required>
+
+<option value="">Select State</option>
+<option>Madhya Pradesh</option>
+<option>Rajasthan</option>
+<option>Uttar Pradesh</option>
+<option>Maharashtra</option>
+<option>Gujarat</option>
+<option>Delhi</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Pincode</label>
+
+<input
+id="pincode"
+type="tel"
+maxlength="6"
+placeholder="6 digit pincode">
+
+</div>
+
+
+<div class="full">
+
+<label>
+Full Address <span class="required">*</span>
+</label>
+
+<textarea
+id="address"
+placeholder="Enter complete address"
+required></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="declaration">
+
+<label>
+
+<input
+id="declaration"
+type="checkbox"
+required>
+
+मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई सभी जानकारी सही है।
+
+</label>
+
+</div>
+
+
+<button
+id="registerBtn"
+class="primary-btn"
+type="button"
+onclick="registerCandidate()">
+
+REGISTER & CONTINUE →
+
+</button>
+
+
+<div id="registerMessage"></div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginSection" class="hidden">
+
+<div class="login-card">
+
+<div class="login-icon">🔐</div>
+
+<h2 class="login-title">
+Candidate Login
+</h2>
+
+<p class="login-subtitle">
+Registration सफल है। अब अपनी Login ID और Password से Login करें।
+</p>
+
+
+<div
+id="credentialsBox"
+class="credentials">
+</div>
+
+
+<label>
+Login ID
+</label>
+
+<input
+id="loginId"
+type="text"
+placeholder="Enter Login ID"
+autocomplete="username">
+
+
+<label>
+Password
+</label>
+
+<input
+id="password"
+type="password"
+placeholder="Enter Password"
+autocomplete="current-password">
+
+
+<label>
+Captcha
+</label>
+
+
+<div class="captcha-row">
+
+<div
+id="captchaBox"
+class="captcha-box">
+
+Loading...
+
+</div>
+
+<button
+class="refresh"
+type="button"
+onclick="loadCaptcha()">
+
+↻
+
+</button>
+
+</div>
+
+
+<input
+id="captcha"
+type="text"
+placeholder="Enter Captcha"
+autocomplete="off">
+
+
+<button
+id="loginBtn"
+class="primary-btn"
+type="button"
+onclick="loginCandidate()">
+
+LOGIN & CONTINUE →
+
+</button>
+
+
+<div id="loginMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboardSection" class="hidden">
+
+<div class="dashboard">
+
+<div class="login-icon">🎓</div>
+
+<div class="welcome">
+Welcome, <span id="candidateName"></span>
+</div>
+
+<div class="dashboard-sub">
+Candidate Dashboard
+</div>
+
+
+<div class="info-grid">
+
+<div class="info-box">
+
+<div class="info-label">
+Registration ID
+</div>
+
+<div
+class="info-value"
+id="dashboardRegistration">
+-
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-label">
+Login ID
+</div>
+
+<div
+class="info-value"
+id="dashboardLogin">
+-
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-label">
+Qualification
+</div>
+
+<div
+class="info-value"
+id="dashboardQualification">
+-
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-label">
+Exam Status
+</div>
+
+<div class="info-value">
+Not Started
+</div>
+
+</div>
+
+</div>
+
+
+<button
+class="start-btn"
+onclick="startExam()">
+
+START EXAM →
+
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+© Online Examination Portal
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   GOOGLE APPS SCRIPT URL
+================================================== */
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyJteCHijq9NPIg6jhWf7HByMoCOmoHSDM0v1B8VLGAZSReG8bgOZ8uuoeQBOD_lq_kdA/exec";
+
+
+let captchaToken = "";
+
+
+/* ==================================================
+   AGE
+================================================== */
+
+document
+.getElementById("dob")
+.addEventListener("change",function(){
+
+const dob = new Date(this.value);
+
+const today = new Date();
+
+if(dob > today){
+
+document.getElementById("age").value="";
+
+return;
+
+}
+
+let age =
+today.getFullYear() -
+dob.getFullYear();
+
+const month =
+today.getMonth() -
+dob.getMonth();
+
+if(
+month < 0 ||
+(
+month === 0 &&
+today.getDate() < dob.getDate()
+)
+){
+
+age--;
+
+}
+
+document.getElementById("age").value = age;
+
+});
+
+
+/* ==================================================
+   MOBILE / PINCODE
+================================================== */
+
+document
+.getElementById("mobile")
+.addEventListener("input",function(){
+
+this.value =
+this.value.replace(/\D/g,"");
+
+});
+
+
+document
+.getElementById("pincode")
+.addEventListener("input",function(){
+
+this.value =
+this.value.replace(/\D/g,"");
+
+});
+
+
+/* ==================================================
+   REGISTRATION
+================================================== */
+
+async function registerCandidate(){
+
+const btn =
+document.getElementById("registerBtn");
+
+const message =
+document.getElementById("registerMessage");
+
+
+const requiredIds = [
+
+"name",
+"fatherName",
+"dob",
+"gender",
+"category",
+"qualification",
+"mobile",
+"district",
+"state",
+"address"
+
+];
+
+
+for(const id of requiredIds){
+
+const element =
+document.getElementById(id);
+
+if(!element.value.trim()){
+
+element.focus();
+
+message.className =
+"message error";
+
+message.innerText =
+"कृपया सभी जरूरी जानकारी भरें।";
+
+return;
+
+}
+
+}
+
+
+if(
+document
+.getElementById("mobile")
+.value.length !== 10
+){
+
+message.className =
+"message error";
+
+message.innerText =
+"Mobile Number 10 digit का होना चाहिए।";
+
+return;
+
+}
+
+
+if(
+!document
+.getElementById("declaration")
+.checked
+){
+
+message.className =
+"message error";
+
+message.innerText =
+"कृपया declaration स्वीकार करें।";
+
+return;
+
+}
+
+
+btn.disabled = true;
+
+btn.innerText =
+"REGISTRATION PROCESSING...";
+
+
+message.className =
+"message";
+
+message.innerText =
+"Registration हो रहा है...";
+
+
+const data = {
+
+name:
+document.getElementById("name").value.trim(),
+
+fatherName:
+document.getElementById("fatherName").value.trim(),
+
+dob:
+document.getElementById("dob").value,
+
+age:
+document.getElementById("age").value,
+
+gender:
+document.getElementById("gender").value,
+
+category:
+document.getElementById("category").value,
+
+qualification:
+document.getElementById("qualification").value,
+
+mobile:
+document.getElementById("mobile").value.trim(),
+
+email:
+document.getElementById("email").value.trim(),
+
+address:
+document.getElementById("address").value.trim(),
+
+district:
+document.getElementById("district").value.trim(),
+
+state:
+document.getElementById("state").value,
+
+pincode:
+document.getElementById("pincode").value.trim()
+
+};
+
+
+try{
+
+const response =
+await fetch(
+SCRIPT_URL,
+{
+
+method:"POST",
+
+body:JSON.stringify(data)
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+if(!result.success){
+
+message.className =
+"message error";
+
+message.innerText =
+"❌ " + result.message;
+
+btn.disabled = false;
+
+btn.innerText =
+"REGISTER & CONTINUE →";
+
+return;
+
+}
+
+
+/* ==============================
+   REGISTRATION SUCCESS
+============================== */
+
+document
+.getElementById("registrationSection")
+.classList.add("hidden");
+
+
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
+
+
+document
+.getElementById("heroText")
+.innerText =
+"Registration Successful — Candidate Login";
+
+
+document
+.getElementById("credentialsBox")
+.innerHTML = `
+
+<div style="text-align:center;margin-bottom:12px;color:#065f46;font-weight:bold;">
+✓ Registration Successful
+</div>
+
+<div class="credential-item">
+
+<span class="credential-label">
+Registration ID
+</span>
+
+<span class="credential-value">
+${result.registrationId}
+</span>
+
+</div>
+
+<div class="credential-item">
+
+<span class="credential-label">
+Login ID
+</span>
+
+<span class="credential-value">
+${result.loginId}
+</span>
+
+</div>
+
+<div class="credential-item">
+
+<span class="credential-label">
+Password
+</span>
+
+<span class="credential-value">
+${result.password}
+</span>
+
+</div>
+
+<div style="font-size:12px;color:#64748b;text-align:center;margin-top:12px;">
+इन Login Details को सुरक्षित रखें।
+</div>
+
+`;
+
+
+/* AUTO FILL LOGIN */
+
+document
+.getElementById("loginId")
+.value =
+result.loginId;
+
+
+document
+.getElementById("password")
+.value =
+result.password;
+
+
+loadCaptcha();
+
+}
+
+
+catch(error){
+
+console.error(error);
+
+message.className =
+"message error";
+
+message.innerText =
+"Connection error. कृपया दोबारा प्रयास करें।";
+
+btn.disabled = false;
+
+btn.innerText =
+"REGISTER & CONTINUE →";
+
+}
+
+}
+
+
+/* ==================================================
+   CAPTCHA
+================================================== */
+
+async function loadCaptcha(){
+
+const box =
+document.getElementById("captchaBox");
+
+box.innerText =
+"Loading...";
+
+
+try{
+
+const response =
+await fetch(
+SCRIPT_URL,
+{
+
+method:"POST",
+
+body:JSON.stringify({
+
+action:"captcha"
+
+})
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+if(result.success){
+
+captchaToken =
+result.token;
+
+box.innerText =
+result.captcha;
+
+document
+.getElementById("captcha")
+.value = "";
+
+}
+
+else{
+
+box.innerText =
+"ERROR";
+
+}
+
+}
+
+catch(error){
+
+box.innerText =
+"ERROR";
+
+}
+
+}
+
+
+/* ==================================================
+   LOGIN
+================================================== */
+
+async function loginCandidate(){
+
+const btn =
+document.getElementById("loginBtn");
+
+const message =
+document.getElementById("loginMessage");
+
+
+const loginId =
+document
+.getElementById("loginId")
+.value.trim();
+
+
+const password =
+document
+.getElementById("password")
+.value;
+
+
+const captcha =
+document
+.getElementById("captcha")
+.value.trim();
+
+
+if(!loginId || !password || !captcha){
+
+message.className =
+"message error";
+
+message.innerText =
+"Login ID, Password और Captcha भरें।";
+
+return;
+
+}
+
+
+btn.disabled = true;
+
+btn.innerText =
+"VERIFYING...";
+
+
+message.className =
+"message";
+
+message.innerText =
+"Login verify हो रहा है...";
+
+
+try{
+
+const response =
+await fetch(
+SCRIPT_URL,
+{
+
+method:"POST",
+
+body:JSON.stringify({
+
+action:"login",
+
+loginId:loginId,
+
+password:password,
+
+captcha:captcha,
+
+captchaToken:captchaToken
+
+})
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+if(!result.success){
+
+message.className =
+"message error";
+
+message.innerText =
+"❌ " + result.message;
+
+btn.disabled = false;
+
+btn.innerText =
+"LOGIN & CONTINUE →";
+
+loadCaptcha();
+
+return;
+
+}
+
+
+/* ==============================
+   LOGIN SUCCESS
+============================== */
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+
+document
+.getElementById("dashboardSection")
+.classList.remove("hidden");
+
+
+document
+.getElementById("heroText")
+.innerText =
+"Candidate Dashboard";
+
+
+document
+.getElementById("candidateName")
+.innerText =
+result.name;
+
+
+document
+.getElementById("dashboardRegistration")
+.innerText =
+result.registrationId;
+
+
+document
+.getElementById("dashboardLogin")
+.innerText =
+result.loginId;
+
+
+document
+.getElementById("dashboardQualification")
+.innerText =
+result.qualification;
+
+
+}
+
+
+catch(error){
+
+console.error(error);
+
+message.className =
+"message error";
+
+message.innerText =
+"Connection error. कृपया फिर से कोशिश करें।";
+
+btn.disabled=false;
+
+btn.innerText =
+"LOGIN & CONTINUE →";
+
+}
+
+}
+
+
+/* ==================================================
+   START EXAM
+================================================== */
+
+function startExam(){
+
+alert(
+"Exam module अभी तैयार किया जा रहा है।"
+);
+
+}
+
+</script>
+
+</body>
+</html>
