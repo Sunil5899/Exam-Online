@@ -4,714 +4,576 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Online Examination Portal</title>
+<title>Online Examination System</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
 
 body{
   margin:0;
-  font-family:Arial,"Noto Sans",sans-serif;
-  background:
-  radial-gradient(circle at top left,#dbeafe,transparent 35%),
-  radial-gradient(circle at bottom right,#e0e7ff,transparent 35%),
-  #eef2f7;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#dbeafe,#f0f9ff);
   color:#172033;
-  min-height:100vh;
 }
 
-.topbar{
-  background:#0b1f3a;
+.hidden{
+  display:none !important;
+}
+
+header{
+  background:linear-gradient(135deg,#111827,#1d4ed8,#2563eb);
   color:white;
-  padding:14px 6%;
+  padding:18px 25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 4px 15px rgba(0,0,0,.18);
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+  gap:15px;
 }
 
 .logo{
-  width:46px;
-  height:46px;
-  border-radius:13px;
-  background:linear-gradient(145deg,#2563eb,#1d4ed8);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   font-size:24px;
+  font-weight:bold;
 }
 
-.brand h2{
-  margin:0;
-  font-size:19px;
+.logo-small{
+  font-size:13px;
+  opacity:.85;
+  margin-top:3px;
 }
 
-.brand span{
-  font-size:12px;
-  color:#cbd5e1;
-}
-
-.wrapper{
-  max-width:1050px;
-  margin:35px auto;
+main{
+  max-width:1100px;
+  margin:30px auto;
   padding:0 15px;
 }
 
 .card{
   background:white;
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(15,23,42,.15);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 12px 35px rgba(15,23,42,.12);
+  margin-bottom:25px;
 }
 
 .hero{
-  padding:35px;
   text-align:center;
-  background:linear-gradient(110deg,#0f3d75,#155eaa,#2563eb);
-  color:white;
+  padding:35px 20px;
 }
 
 .hero h1{
-  margin:0 0 8px;
-  font-size:30px;
+  margin:0;
+  font-size:32px;
+  color:#1e3a8a;
 }
 
 .hero p{
-  margin:0;
-  color:#dbeafe;
-}
-
-.content{
-  padding:35px;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* HOME */
-
-.home{
-  text-align:center;
-}
-
-.home-icon{
-  width:85px;
-  height:85px;
-  margin:0 auto 18px;
-  border-radius:24px;
-  background:linear-gradient(145deg,#2563eb,#1d4ed8);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  box-shadow:0 12px 25px rgba(37,99,235,.28);
-}
-
-.home h2{
-  margin:0 0 8px;
-  font-size:27px;
-}
-
-.home p{
-  color:#64748b;
-  margin-bottom:30px;
-}
-
-.option-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  max-width:720px;
-  margin:auto;
-}
-
-.option{
-  border:1px solid #dbe3ef;
-  border-radius:18px;
-  padding:28px 20px;
-  cursor:pointer;
-  background:#fff;
-  transition:.2s;
-  box-shadow:0 8px 20px rgba(15,23,42,.07);
-}
-
-.option:hover{
-  transform:translateY(-4px);
-  box-shadow:0 15px 28px rgba(15,23,42,.13);
-}
-
-.option-icon{
-  font-size:38px;
-  margin-bottom:12px;
-}
-
-.option h3{
-  margin:0 0 7px;
-  font-size:20px;
-}
-
-.option p{
-  margin:0;
-  font-size:13px;
   color:#64748b;
 }
 
-.registration-option{
-  border-top:5px solid #2563eb;
-}
-
-.login-option{
-  border-top:5px solid #059669;
-}
-
-/* FORMS */
-
-.section{
-  margin-bottom:28px;
-}
-
-.section-title{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  border-bottom:1px solid #e2e8f0;
-  padding-bottom:12px;
-  margin-bottom:20px;
-}
-
-.section-number{
-  width:32px;
-  height:32px;
-  border-radius:9px;
-  background:#eaf2ff;
-  color:#1d4ed8;
+.menu{
   display:flex;
   justify-content:center;
-  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 20px;
+  font-size:15px;
   font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
 }
 
-.section-title h3{
-  margin:0;
-  font-size:17px;
+button:hover{
+  transform:translateY(-1px);
 }
 
-.grid{
+.primary{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+}
+
+.success{
+  background:#059669;
+  color:white;
+}
+
+.secondary{
+  background:#475569;
+  color:white;
+}
+
+.danger{
+  background:#dc2626;
+  color:white;
+}
+
+.form-title{
+  text-align:center;
+  color:#1e3a8a;
+  margin-top:0;
+}
+
+.form-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
 }
 
-.full{
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+.field.full{
   grid-column:1/-1;
 }
 
 label{
-  display:block;
-  font-size:13px;
   font-weight:bold;
-  margin-bottom:7px;
-  color:#334155;
-}
-
-.required{
-  color:#dc2626;
+  font-size:14px;
+  margin-bottom:6px;
 }
 
 input,
 select,
 textarea{
   width:100%;
-  padding:12px 13px;
+  padding:12px;
   border:1px solid #cbd5e1;
-  border-radius:10px;
+  border-radius:9px;
+  font-size:15px;
   outline:none;
-  font-size:14px;
-  background:white;
+  background:#fff;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
   border-color:#2563eb;
-  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+  box-shadow:0 0 0 3px rgba(37,99,235,.1);
 }
 
 textarea{
-  min-height:90px;
+  min-height:80px;
   resize:vertical;
 }
 
-.readonly{
-  background:#f8fafc;
-}
-
-.declaration{
-  background:#f8fafc;
-  padding:15px;
-  border:1px solid #e2e8f0;
-  border-radius:11px;
-  font-size:13px;
-}
-
-.declaration input{
-  width:auto;
-  margin-right:7px;
-}
-
-.primary-btn{
-  width:100%;
-  margin-top:22px;
-  padding:15px;
-  border:none;
-  border-radius:11px;
-  background:linear-gradient(135deg,#1d4ed8,#2563eb);
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 5px 0 #173ea5;
-}
-
-.primary-btn:active{
-  transform:translateY(3px);
-}
-
-.primary-btn:disabled{
-  opacity:.6;
-}
-
-.back-btn{
-  border:none;
-  background:#e2e8f0;
-  color:#334155;
-  padding:10px 17px;
-  border-radius:9px;
-  cursor:pointer;
-  margin-bottom:20px;
-  font-weight:bold;
-}
-
-/* LOGIN */
-
-.login-card{
-  max-width:470px;
-  margin:auto;
-}
-
-.login-icon{
-  width:70px;
-  height:70px;
-  margin:0 auto 15px;
-  border-radius:20px;
-  background:linear-gradient(145deg,#059669,#10b981);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
-}
-
-.login-title{
+.form-actions{
+  margin-top:20px;
   text-align:center;
-  margin:0;
-  font-size:26px;
-}
-
-.login-subtitle{
-  text-align:center;
-  color:#64748b;
-  font-size:13px;
-  margin:8px 0 25px;
-}
-
-.captcha-row{
-  display:flex;
-  gap:10px;
-}
-
-.captcha-box{
-  flex:1;
-  height:47px;
-  border-radius:10px;
-  background:linear-gradient(135deg,#e0e7ff,#dbeafe);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:21px;
-  font-weight:bold;
-  letter-spacing:5px;
-  color:#1e3a8a;
-}
-
-.refresh{
-  width:47px;
-  height:47px;
-  border:0;
-  border-radius:10px;
-  background:#e2e8f0;
-  font-size:21px;
-  cursor:pointer;
-}
-
-/* SUCCESS */
-
-.success-box{
-  max-width:500px;
-  margin:auto;
-  background:#ecfdf5;
-  border:1px solid #a7f3d0;
-  border-radius:15px;
-  padding:22px;
-  text-align:center;
-  color:#065f46;
-}
-
-.credential{
-  background:white;
-  margin:10px 0;
-  padding:12px;
-  border-radius:9px;
-  border:1px solid #d1fae5;
-}
-
-.credential small{
-  display:block;
-  color:#64748b;
-}
-
-.credential strong{
-  font-size:20px;
-  color:#1d4ed8;
-  letter-spacing:1px;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-  max-width:700px;
-  margin:auto;
-  text-align:center;
-}
-
-.welcome{
-  font-size:27px;
-  font-weight:bold;
-}
-
-.dashboard-sub{
-  color:#64748b;
-  margin:7px 0 25px;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  text-align:left;
-}
-
-.info-box{
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:11px;
-  padding:15px;
-}
-
-.info-label{
-  font-size:11px;
-  color:#64748b;
-}
-
-.info-value{
-  margin-top:5px;
-  font-weight:bold;
-}
-
-.start-btn{
-  width:100%;
-  margin-top:25px;
-  padding:16px;
-  border:0;
-  border-radius:11px;
-  background:linear-gradient(135deg,#059669,#10b981);
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 5px 0 #047857;
 }
 
 .message{
-  margin-top:18px;
-  padding:13px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:9px;
+  margin:15px 0;
+  display:none;
   text-align:center;
-  font-size:13px;
+  font-weight:bold;
 }
 
 .error{
-  background:#fef2f2;
+  background:#fee2e2;
   color:#991b1b;
-  border:1px solid #fecaca;
 }
 
-.footer{
+.success-msg{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.credentials{
+  background:#eff6ff;
+  border:1px solid #93c5fd;
+  border-radius:15px;
+  padding:20px;
   text-align:center;
-  color:#64748b;
-  font-size:12px;
-  padding:18px;
+  margin-top:20px;
+}
+
+.credential-box{
+  background:white;
+  padding:10px;
+  border-radius:8px;
+  margin:8px 0;
+  font-size:17px;
+}
+
+.dashboard{
+  text-align:center;
+}
+
+.dashboard-icon{
+  font-size:55px;
+}
+
+.dashboard h2{
+  color:#1e3a8a;
+}
+
+.exam-card{
+  border:2px solid #bfdbfe;
+  border-radius:16px;
+  padding:22px;
+  background:linear-gradient(135deg,#eff6ff,#ffffff);
+  max-width:600px;
+  margin:25px auto;
+}
+
+.exam-card h3{
+  color:#1d4ed8;
+  font-size:23px;
+}
+
+.exam-details{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:20px 0;
+}
+
+.detail{
+  background:white;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #dbeafe;
+}
+
+.detail strong{
+  display:block;
+  font-size:18px;
+  color:#1d4ed8;
+}
+
+.exam-header{
+  background:linear-gradient(135deg,#111827,#1d4ed8);
+  color:white;
+  border-radius:16px;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.exam-header h2{
+  margin:0 0 5px;
+}
+
+.exam-header p{
+  margin:0;
+  opacity:.85;
+}
+
+.timer{
+  background:white;
+  color:#dc2626;
+  padding:12px 18px;
+  border-radius:10px;
+  font-size:23px;
+  font-weight:bold;
+  min-width:110px;
+  text-align:center;
+}
+
+.instructions{
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  padding:15px;
+  border-radius:12px;
+  margin:18px 0;
+}
+
+.question-palette{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:15px 0;
+}
+
+.palette-btn{
+  padding:8px 11px;
+  background:#e2e8f0;
+  color:#1e293b;
+  border-radius:7px;
+  font-size:13px;
+}
+
+.palette-btn.answered{
+  background:#059669;
+  color:white;
+}
+
+.palette-btn.active{
+  background:#2563eb;
+  color:white;
+}
+
+.question-card{
+  background:white;
+  border-radius:16px;
+  padding:25px;
+  border:1px solid #e2e8f0;
+  box-shadow:0 8px 25px rgba(15,23,42,.08);
+}
+
+.question-title{
+  font-size:19px;
+  line-height:1.6;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.option{
+  display:block;
+  border:1px solid #cbd5e1;
+  padding:14px;
+  border-radius:10px;
+  margin:10px 0;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.option:hover{
+  background:#eff6ff;
+  border-color:#2563eb;
+}
+
+.option.selected{
+  background:#dbeafe;
+  border-color:#2563eb;
+}
+
+.option input{
+  width:auto;
+  margin-right:8px;
+}
+
+.question-navigation{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:20px;
+}
+
+.submit-exam{
+  width:100%;
+  margin-top:20px;
+  background:#059669;
+  color:white;
+  padding:15px;
+  font-size:17px;
+}
+
+.logout{
+  margin-top:20px;
+}
+
+.success-screen{
+  text-align:center;
+  padding:45px 20px;
+}
+
+.success-screen .big{
+  font-size:65px;
+}
+
+.success-screen h2{
+  color:#059669;
 }
 
 @media(max-width:700px){
 
-  .topbar{
-    padding:12px 18px;
-  }
-
-  .brand h2{
-    font-size:15px;
-  }
-
-  .wrapper{
-    margin:15px auto;
-  }
-
-  .hero{
-    padding:25px 18px;
-  }
-
-  .hero h1{
-    font-size:23px;
-  }
-
-  .content{
-    padding:23px 18px;
-  }
-
-  .option-grid,
-  .grid,
-  .info-grid{
+  .form-grid{
     grid-template-columns:1fr;
   }
 
-  .full{
+  .field.full{
     grid-column:auto;
   }
+
+  .exam-details{
+    grid-template-columns:1fr;
+  }
+
+  .exam-header{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .header-inner{
+    flex-direction:column;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<header class="topbar">
+<header>
 
-<div class="brand">
-
-<div class="logo">🎓</div>
+<div class="header-inner">
 
 <div>
-<h2>Online Examination Portal</h2>
-<span>Secure Candidate Portal</span>
+
+<div class="logo">
+Online Examination System
+</div>
+
+<div class="logo-small">
+Registration • Login • Online Exam
 </div>
 
 </div>
 
-<div>🔒 Secure</div>
+<div id="headerUser"></div>
+
+</div>
 
 </header>
 
 
-<div class="wrapper">
-
-<div class="card">
-
-<div class="hero">
-
-<h1 id="heroTitle">
-Online Examination Portal
-</h1>
-
-<p id="heroText">
-Registration & Candidate Login
-</p>
-
-</div>
-
-
-<div class="content">
+<main>
 
 
 <!-- ================= HOME ================= -->
 
-<section id="homeSection">
+<section id="homeSection" class="card hero">
 
-<div class="home">
-
-<div class="home-icon">
-🎓
-</div>
-
-<h2>Welcome Candidate</h2>
+<h1 id="homeTitle">
+Online Examination System
+</h1>
 
 <p>
-Please select an option to continue
+Candidate Registration एवं Online Examination Portal
 </p>
 
+<div class="menu">
 
-<div class="option-grid">
-
-
-<div
-class="option registration-option"
+<button
+class="primary"
 onclick="showRegistration()">
 
-<div class="option-icon">
-📝
-</div>
+📝 New Registration
 
-<h3>
-NEW REGISTRATION
-</h3>
-
-<p>
-New candidate registration के लिए यहाँ क्लिक करें
-</p>
-
-</div>
+</button>
 
 
-<div
-class="option login-option"
+<button
+class="success"
 onclick="showLogin()">
 
-<div class="option-icon">
-🔐
-</div>
+🔐 Candidate Login
 
-<h3>
-CANDIDATE LOGIN
-</h3>
-
-<p>
-पहले से registered candidates यहाँ Login करें
-</p>
-
-</div>
-
-
-</div>
+</button>
 
 </div>
 
 </section>
 
 
+
 <!-- ================= REGISTRATION ================= -->
 
 <section
 id="registrationSection"
-class="hidden">
+class="card hidden">
 
-<button
-class="back-btn"
-onclick="showHome()">
+<h2 class="form-title">
+Candidate Registration
+</h2>
 
-← Back to Home
+<div
+id="registrationMessage"
+class="message">
+</div>
 
-</button>
+
+<form
+id="registrationForm"
+onsubmit="registerCandidate(event)">
 
 
-<div class="section">
+<div class="form-grid">
 
-<div class="section-title">
 
-<div class="section-number">1</div>
+<div class="field">
 
-<h3>Personal Details</h3>
+<label>Candidate Name *</label>
+
+<input
+id="regName"
+required
+placeholder="पूरा नाम">
 
 </div>
 
 
-<div class="grid">
+<div class="field">
 
-
-<div>
-
-<label>
-Candidate Name <span class="required">*</span>
-</label>
+<label>Father's Name *</label>
 
 <input
-id="name"
-type="text"
-placeholder="Enter candidate name">
+id="regFather"
+required
+placeholder="पिता का नाम">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-Father's Name <span class="required">*</span>
-</label>
+<label>Date of Birth *</label>
 
 <input
-id="fatherName"
-type="text"
-placeholder="Enter father's name">
+type="date"
+id="regDob"
+required
+onchange="calculateAge()">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-Date of Birth <span class="required">*</span>
-</label>
+<label>Age *</label>
 
 <input
-id="dob"
-type="date">
-
-</div>
-
-
-<div>
-
-<label>
-Age
-</label>
-
-<input
-id="age"
-class="readonly"
-type="number"
+id="regAge"
 readonly
-placeholder="Auto">
+placeholder="Age">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-Gender <span class="required">*</span>
-</label>
+<label>Gender</label>
 
-<select id="gender">
+<select id="regGender">
 
-<option value="">Select Gender</option>
+<option value="">Select</option>
 <option>Male</option>
 <option>Female</option>
 <option>Other</option>
@@ -721,264 +583,271 @@ Gender <span class="required">*</span>
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-Category <span class="required">*</span>
-</label>
+<label>Category *</label>
 
-<select id="category">
+<select id="regCategory" required>
 
 <option value="">Select Category</option>
-<option>General</option>
-<option>OBC</option>
 <option>SC</option>
 <option>ST</option>
+<option>OBC</option>
 <option>EWS</option>
+<option>General</option>
 <option>Other</option>
 
 </select>
 
 </div>
 
-</div>
 
-</div>
+<div class="field">
 
+<label>Qualification *</label>
 
-<div class="section">
-
-<div class="section-title">
-
-<div class="section-number">2</div>
-
-<h3>Qualification</h3>
-
-</div>
-
-
-<label>
-Highest Qualification <span class="required">*</span>
-</label>
-
-<select id="qualification">
+<select id="regQualification" required>
 
 <option value="">Select Qualification</option>
 <option>10th</option>
 <option>12th</option>
 <option>UG</option>
 <option>PG</option>
-<option>Other</option>
 
 </select>
 
 </div>
 
 
-<div class="section">
+<div class="field">
 
-<div class="section-title">
-
-<div class="section-number">3</div>
-
-<h3>Contact & Address</h3>
-
-</div>
-
-
-<div class="grid">
-
-
-<div>
-
-<label>
-Mobile Number <span class="required">*</span>
-</label>
+<label>Mobile Number *</label>
 
 <input
-id="mobile"
 type="tel"
+id="regMobile"
+required
 maxlength="10"
-placeholder="10 digit mobile number">
+pattern="[0-9]{10}"
+placeholder="10 digit mobile">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>Email ID</label>
+<label>Email</label>
 
 <input
-id="email"
 type="email"
-placeholder="example@gmail.com">
+id="regEmail"
+placeholder="Email">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-District <span class="required">*</span>
-</label>
+<label>District *</label>
 
 <input
-id="district"
-type="text"
-placeholder="Enter district">
+id="regDistrict"
+required
+placeholder="District">
 
 </div>
 
 
-<div>
+<div class="field">
 
-<label>
-State <span class="required">*</span>
-</label>
+<label>State *</label>
 
-<select id="state">
-
-<option value="">Select State</option>
-<option>Madhya Pradesh</option>
-<option>Rajasthan</option>
-<option>Uttar Pradesh</option>
-<option>Maharashtra</option>
-<option>Gujarat</option>
-<option>Delhi</option>
-<option>Other</option>
-
-</select>
+<input
+id="regState"
+value="Madhya Pradesh"
+required>
 
 </div>
 
 
-<div>
+<div class="field">
 
 <label>Pincode</label>
 
 <input
-id="pincode"
-type="tel"
+id="regPincode"
 maxlength="6"
-placeholder="6 digit pincode">
+placeholder="Pincode">
 
 </div>
 
 
-<div class="full">
+<div class="field full">
 
-<label>
-Full Address <span class="required">*</span>
-</label>
+<label>Full Address *</label>
 
 <textarea
-id="address"
-placeholder="Enter complete address"></textarea>
+id="regAddress"
+required
+placeholder="पूरा पता"></textarea>
 
 </div>
 
-</div>
 
 </div>
 
 
-<div class="declaration">
-
-<label>
-
-<input
-id="declaration"
-type="checkbox">
-
-मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई सभी जानकारी सही है।
-
-</label>
-
-</div>
-
+<div class="form-actions">
 
 <button
-id="registerBtn"
-class="primary-btn"
-onclick="registerCandidate()">
+type="submit"
+class="primary">
 
-REGISTER & CONTINUE →
+REGISTER NOW
 
 </button>
 
+<button
+type="button"
+class="secondary"
+onclick="showHome()">
 
-<div id="registerMessage"></div>
+BACK
+
+</button>
+
+</div>
+
+</form>
+
+
+<div
+id="credentials"
+class="credentials hidden">
+
+<h3>🎉 Registration Successful</h3>
+
+<p>आपकी Login Details:</p>
+
+
+<div class="credential-box">
+
+Registration ID:
+<strong id="registrationId"></strong>
+
+</div>
+
+
+<div class="credential-box">
+
+Login ID:
+<strong id="generatedLogin"></strong>
+
+</div>
+
+
+<div class="credential-box">
+
+Password:
+<strong id="generatedPassword"></strong>
+
+</div>
+
+
+<p>
+इन details को सुरक्षित रखें।
+</p>
+
+
+<button
+class="success"
+onclick="showLogin()">
+
+GO TO LOGIN
+
+</button>
+
+</div>
 
 </section>
+
 
 
 <!-- ================= LOGIN ================= -->
 
 <section
 id="loginSection"
-class="hidden">
+class="card hidden">
 
-<button
-class="back-btn"
-onclick="showHome()">
-
-← Back to Home
-
-</button>
-
-
-<div class="login-card">
-
-<div class="login-icon">
-🔐
-</div>
-
-<h2 class="login-title">
+<h2 class="form-title">
 Candidate Login
 </h2>
 
-<p class="login-subtitle">
-Login ID, Password और Captcha डालकर Login करें
-</p>
+
+<div
+id="loginMessage"
+class="message">
+</div>
 
 
-<label>
-Login ID
-</label>
+<form
+onsubmit="loginCandidate(event)">
+
+
+<div class="field">
+
+<label>Login ID *</label>
 
 <input
 id="loginId"
-type="text"
-placeholder="Enter Login ID">
+required
+placeholder="LOGIN000001">
+
+</div>
 
 
-<label>
-Password
-</label>
+<div class="field">
+
+<label>Password *</label>
 
 <input
-id="password"
 type="password"
-placeholder="Enter Password">
+id="loginPassword"
+required
+placeholder="Password">
+
+</div>
 
 
-<label>
-Captcha
-</label>
+<div class="field">
 
+<label>Captcha *</label>
 
-<div class="captcha-row">
+<div style="
+display:flex;
+gap:10px;
+align-items:center;
+">
 
 <div
-id="captchaBox"
-class="captcha-box">
+id="captchaText"
+style="
+background:#e2e8f0;
+padding:12px 18px;
+border-radius:9px;
+font-size:20px;
+font-weight:bold;
+letter-spacing:4px;
+">
 
 -----
 
 </div>
 
+
 <button
-class="refresh"
+type="button"
+class="secondary"
 onclick="loadCaptcha()">
 
 ↻
@@ -987,190 +856,108 @@ onclick="loadCaptcha()">
 
 </div>
 
+</div>
+
+
+<div class="field">
+
+<label>Enter Captcha</label>
 
 <input
-id="captcha"
-type="text"
-placeholder="Enter Captcha">
+id="captchaInput"
+required
+placeholder="Captcha">
 
+</div>
+
+
+<div class="form-actions">
 
 <button
-id="loginBtn"
-class="primary-btn"
-onclick="loginCandidate()">
+type="submit"
+class="success">
 
-LOGIN & CONTINUE →
+LOGIN
 
 </button>
 
-
-<div id="loginMessage"></div>
-
-</div>
-
-</section>
-
-
-<!-- ================= REGISTRATION SUCCESS ================= -->
-
-<section
-id="successSection"
-class="hidden">
-
-<div class="success-box">
-
-<h2>
-✓ Registration Successful
-</h2>
-
-<p>
-आपका registration सफलतापूर्वक हो गया है।
-</p>
-
-
-<div class="credential">
-
-<small>Registration ID</small>
-
-<strong id="successRegistration">
--
-</strong>
-
-</div>
-
-
-<div class="credential">
-
-<small>Login ID</small>
-
-<strong id="successLogin">
--
-</strong>
-
-</div>
-
-
-<div class="credential">
-
-<small>Password</small>
-
-<strong id="successPassword">
--
-</strong>
-
-</div>
-
-
-<p style="font-size:12px;color:#64748b;">
-Login details सुरक्षित रखें।
-</p>
-
-
 <button
-class="primary-btn"
-onclick="goToLoginWithCredentials()">
+type="button"
+class="secondary"
+onclick="showRegistration()">
 
-GO TO CANDIDATE LOGIN →
+NEW REGISTRATION
 
 </button>
 
 </div>
 
+
+</form>
+
 </section>
+
 
 
 <!-- ================= DASHBOARD ================= -->
 
 <section
 id="dashboardSection"
-class="hidden">
+class="card dashboard hidden">
 
-<div class="dashboard">
-
-<div class="login-icon">
-🎓
+<div class="dashboard-icon">
+👨‍🎓
 </div>
 
-<div class="welcome">
+<h2>
+Welcome, <span id="candidateName"></span>
+</h2>
 
-Welcome,
-<span id="candidateName">
-Candidate
-</span>
-
-</div>
-
-<div class="dashboard-sub">
-Candidate Dashboard
-</div>
+<p>
+Registration ID:
+<strong id="candidateRegistration"></strong>
+</p>
 
 
-<div class="info-grid">
+<div class="exam-card">
 
+<h3>
+📚 GK & GS Examination
+</h3>
 
-<div class="info-box">
+<div class="exam-details">
 
-<div class="info-label">
-Registration ID
-</div>
+<div class="detail">
 
-<div
-class="info-value"
-id="dashboardRegistration">
--
-</div>
+<strong>30</strong>
+Questions
 
 </div>
 
+<div class="detail">
 
-<div class="info-box">
+<strong>30</strong>
+Marks
 
-<div class="info-label">
-Login ID
 </div>
 
-<div
-class="info-value"
-id="dashboardLogin">
--
+<div class="detail">
+
+<strong>10</strong>
+Minutes
+
 </div>
 
 </div>
 
 
-<div class="info-box">
-
-<div class="info-label">
-Qualification
-</div>
-
-<div
-class="info-value"
-id="dashboardQualification">
--
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="info-label">
-Exam Status
-</div>
-
-<div class="info-value">
-Not Started
-</div>
-
-</div>
-
-
-</div>
+<p>
+सभी प्रश्न Objective / MCQ प्रकार के हैं।
+</p>
 
 
 <button
-class="start-btn"
+class="primary"
 onclick="startExam()">
 
 ▶ START EXAM
@@ -1179,20 +966,159 @@ onclick="startExam()">
 
 </div>
 
+
+<button
+class="danger logout"
+onclick="logout()">
+
+LOGOUT
+
+</button>
+
 </section>
 
 
-</div>
+
+<!-- ================= EXAM ================= -->
+
+<section
+id="examSection"
+class="hidden">
+
+
+<div class="exam-header">
+
+<div>
+
+<h2>
+GK & GS Examination
+</h2>
+
+<p>
+30 Questions • 30 Marks
+</p>
 
 </div>
 
 
-<div class="footer">
-© Online Examination Portal
+<div
+class="timer"
+id="timer">
+
+10:00
+
 </div>
+
+</div>
+
+
+<div class="instructions">
+
+<strong>Instructions:</strong>
+
+<ul>
+
+<li>कुल 30 प्रश्न हैं।</li>
+
+<li>प्रत्येक प्रश्न 1 अंक का है।</li>
+
+<li>कुल समय 10 मिनट है।</li>
+
+<li>आप Previous और Next से प्रश्न बदल सकते हैं।</li>
+
+<li>हरा नंबर answered question को दर्शाता है।</li>
+
+<li>समय समाप्त होने पर Exam automatically submit होगा।</li>
+
+</ul>
+
+</div>
+
+
+<div
+id="questionPalette"
+class="question-palette">
+</div>
+
+
+<div
+id="questionArea">
+</div>
+
+
+<div class="question-navigation">
+
+<button
+id="previousBtn"
+class="secondary"
+onclick="previousQuestion()">
+
+← Previous
+
+</button>
+
+
+<button
+id="nextBtn"
+class="primary"
+onclick="nextQuestion()">
+
+Next →
+
+</button>
+
+</div>
+
+
+<button
+class="submit-exam"
+onclick="submitExam(false)">
+
+🏁 SUBMIT EXAM
+
+</button>
+
+</section>
+
+
+
+<!-- ================= SUCCESS ================= -->
+
+<section
+id="successSection"
+class="card success-screen hidden">
+
+<div class="big">
+✅
+</div>
+
+<h2>
+Exam Submitted Successfully
+</h2>
+
+<p>
+आपका GK & GS Exam successfully submit हो गया है।
+</p>
+
+<p>
+आपकी response सुरक्षित रूप से record कर दी गई है।
+</p>
+
+<p>
+<strong>
+Result / Score Candidate को display नहीं किया गया है।
+</strong>
+</p>
+
+</section>
+
+
+</main>
+
 
 
 <script>
+
 
 /* =================================================
    APPS SCRIPT URL
@@ -1202,93 +1128,417 @@ const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbyJteCHijq9NPIg6jhWf7HByMoCOmoHSDM0v1B8VLGAZSReG8bgOZ8uuoeQBOD_lq_kdA/exec";
 
 
+/* =================================================
+   VARIABLES
+================================================= */
+
 let captchaToken = "";
 
-let savedLoginId = "";
+let currentQuestion = 0;
 
-let savedPassword = "";
+let answers =
+new Array(30).fill("");
+
+let remainingSeconds = 600;
+
+let timerInterval = null;
+
+let examSubmitting = false;
+
+let loggedCandidate = null;
 
 
 /* =================================================
-   SHOW SECTION
+   QUESTIONS
+================================================= */
+
+const questions = [
+
+{
+q:"भारत का संविधान कब लागू हुआ?",
+a:[
+"15 अगस्त 1947",
+"26 जनवरी 1950",
+"26 नवंबर 1949",
+"2 अक्टूबर 1950"
+],
+correct:"B"
+},
+
+{
+q:"भारत की राजधानी कौन-सी है?",
+a:[
+"मुंबई",
+"कोलकाता",
+"नई दिल्ली",
+"चेन्नई"
+],
+correct:"C"
+},
+
+{
+q:"भारत का राष्ट्रीय पशु कौन है?",
+a:[
+"शेर",
+"बाघ",
+"हाथी",
+"हिरण"
+],
+correct:"B"
+},
+
+{
+q:"भारतीय संविधान का निर्माण किस संस्था ने किया?",
+a:[
+"संसद",
+"संविधान सभा",
+"सुप्रीम कोर्ट",
+"लोकसभा"
+],
+correct:"B"
+},
+
+{
+q:"मध्य प्रदेश की राजधानी क्या है?",
+a:[
+"इंदौर",
+"भोपाल",
+"जबलपुर",
+"ग्वालियर"
+],
+correct:"B"
+},
+
+{
+q:"भारत का राष्ट्रीय फूल कौन-सा है?",
+a:[
+"गुलाब",
+"कमल",
+"चमेली",
+"गेंदा"
+],
+correct:"B"
+},
+
+{
+q:"पृथ्वी का प्राकृतिक उपग्रह कौन है?",
+a:[
+"मंगल",
+"चंद्रमा",
+"सूर्य",
+"शुक्र"
+],
+correct:"B"
+},
+
+{
+q:"भारतीय संसद के कितने सदन हैं?",
+a:[
+"एक",
+"दो",
+"तीन",
+"चार"
+],
+correct:"B"
+},
+
+{
+q:"जल का रासायनिक सूत्र क्या है?",
+a:[
+"CO2",
+"H2O",
+"O2",
+"NaCl"
+],
+correct:"B"
+},
+
+{
+q:"सूर्य के सबसे निकट कौन-सा ग्रह है?",
+a:[
+"पृथ्वी",
+"शुक्र",
+"बुध",
+"मंगल"
+],
+correct:"C"
+},
+
+{
+q:"हरित क्रांति से मुख्य रूप से किसका उत्पादन बढ़ा?",
+a:[
+"अनाज",
+"सोना",
+"कोयला",
+"पेट्रोल"
+],
+correct:"A"
+},
+
+{
+q:"लोकसभा का सामान्य कार्यकाल कितने वर्ष है?",
+a:[
+"3 वर्ष",
+"4 वर्ष",
+"5 वर्ष",
+"6 वर्ष"
+],
+correct:"C"
+},
+
+{
+q:"भारत का राष्ट्रीय पक्षी कौन है?",
+a:[
+"तोता",
+"मोर",
+"हंस",
+"गरुड़"
+],
+correct:"B"
+},
+
+{
+q:"विटामिन C की कमी से कौन-सा रोग होता है?",
+a:[
+"स्कर्वी",
+"रिकेट्स",
+"बेरी-बेरी",
+"रातांधता"
+],
+correct:"A"
+},
+
+{
+q:"भारतीय रिजर्व बैंक की स्थापना किस वर्ष हुई?",
+a:[
+"1930",
+"1935",
+"1947",
+"1950"
+],
+correct:"B"
+},
+
+{
+q:"पंचायती राज व्यवस्था कितने स्तरों की होती है?",
+a:[
+"एक",
+"दो",
+"तीन",
+"चार"
+],
+correct:"C"
+},
+
+{
+q:"मौलिक अधिकार संविधान के किस भाग में हैं?",
+a:[
+"भाग I",
+"भाग II",
+"भाग III",
+"भाग IV"
+],
+correct:"C"
+},
+
+{
+q:"नर्मदा नदी का उद्गम कहाँ से होता है?",
+a:[
+"अमरकंटक",
+"पचमढ़ी",
+"महेश्वर",
+"ओंकारेश्वर"
+],
+correct:"A"
+},
+
+{
+q:"सांची स्तूप किस राज्य में स्थित है?",
+a:[
+"राजस्थान",
+"मध्य प्रदेश",
+"उत्तर प्रदेश",
+"बिहार"
+],
+correct:"B"
+},
+
+{
+q:"मानव शरीर में रक्त को पंप करने वाला अंग कौन-सा है?",
+a:[
+"फेफड़ा",
+"हृदय",
+"यकृत",
+"गुर्दा"
+],
+correct:"B"
+},
+
+{
+q:"पौधों में प्रकाश संश्लेषण मुख्यतः किस अंग में होता है?",
+a:[
+"जड़",
+"तना",
+"पत्ती",
+"फूल"
+],
+correct:"C"
+},
+
+{
+q:"भारत का राष्ट्रीय वृक्ष कौन-सा है?",
+a:[
+"नीम",
+"बरगद",
+"पीपल",
+"आम"
+],
+correct:"B"
+},
+
+{
+q:"भारत की शासन व्यवस्था किस प्रकार की है?",
+a:[
+"राजतंत्र",
+"गणतंत्र",
+"साम्राज्य",
+"उपनिवेश"
+],
+correct:"B"
+},
+
+{
+q:"वायुमंडल में सर्वाधिक मात्रा में कौन-सी गैस है?",
+a:[
+"ऑक्सीजन",
+"नाइट्रोजन",
+"कार्बन डाइऑक्साइड",
+"हाइड्रोजन"
+],
+correct:"B"
+},
+
+{
+q:"क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन-सा है?",
+a:[
+"मध्य प्रदेश",
+"महाराष्ट्र",
+"राजस्थान",
+"उत्तर प्रदेश"
+],
+correct:"C"
+},
+
+{
+q:"राज्य के नीति-निर्देशक तत्व किस भाग में हैं?",
+a:[
+"भाग II",
+"भाग III",
+"भाग IV",
+"भाग V"
+],
+correct:"C"
+},
+
+{
+q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+a:[
+"RAM",
+"CPU",
+"Monitor",
+"Keyboard"
+],
+correct:"B"
+},
+
+{
+q:"भारत में राष्ट्रीय मतदाता दिवस कब मनाया जाता है?",
+a:[
+"25 जनवरी",
+"26 जनवरी",
+"15 अगस्त",
+"2 अक्टूबर"
+],
+correct:"A"
+},
+
+{
+q:"भारतीय राष्ट्रीय ध्वज में कितने रंग प्रमुख रूप से होते हैं?",
+a:[
+"दो",
+"तीन",
+"चार",
+"पाँच"
+],
+correct:"B"
+},
+
+{
+q:"भारत का राष्ट्रीय पशु बाघ किस प्रकार का जीव है?",
+a:[
+"शाकाहारी",
+"मांसाहारी",
+"सर्वाहारी",
+"कीटभक्षी"
+],
+correct:"B"
+}
+
+];
+
+
+/* =================================================
+   SHOW / HIDE
 ================================================= */
 
 function hideAll(){
 
-document
-.querySelectorAll(
-"#homeSection,#registrationSection,#loginSection,#successSection,#dashboardSection"
-)
-.forEach(function(section){
-
-section.classList.add("hidden");
-
-});
+  document
+  .querySelectorAll(
+    "#homeSection,#registrationSection,#loginSection,#dashboardSection,#examSection,#successSection"
+  )
+  .forEach(el =>
+    el.classList.add("hidden")
+  );
 
 }
 
 
 function showHome(){
 
-hideAll();
+  hideAll();
 
-document
-.getElementById("homeSection")
-.classList.remove("hidden");
-
-document
-.getElementById("heroTitle")
-.innerText =
-"Online Examination Portal";
-
-document
-.getElementById("heroText")
-.innerText =
-"Registration & Candidate Login";
+  document
+  .getElementById("homeSection")
+  .classList.remove("hidden");
 
 }
 
 
 function showRegistration(){
 
-hideAll();
+  hideAll();
 
-document
-.getElementById("registrationSection")
-.classList.remove("hidden");
+  document
+  .getElementById("registrationSection")
+  .classList.remove("hidden");
 
-document
-.getElementById("heroTitle")
-.innerText =
-"Candidate Registration";
-
-document
-.getElementById("heroText")
-.innerText =
-"New Candidate Registration";
+  document
+  .getElementById("credentials")
+  .classList.add("hidden");
 
 }
 
 
 function showLogin(){
 
-hideAll();
+  hideAll();
 
-document
-.getElementById("loginSection")
-.classList.remove("hidden");
+  document
+  .getElementById("loginSection")
+  .classList.remove("hidden");
 
-document
-.getElementById("heroTitle")
-.innerText =
-"Candidate Login";
-
-document
-.getElementById("heroText")
-.innerText =
-"Secure Login Portal";
-
-loadCaptcha();
+  loadCaptcha();
 
 }
 
@@ -1297,364 +1547,176 @@ loadCaptcha();
    AGE
 ================================================= */
 
-document
-.getElementById("dob")
-.addEventListener(
-"change",
-function(){
+function calculateAge(){
 
-const dob =
-new Date(this.value);
+  const dob =
+  document
+  .getElementById("regDob")
+  .value;
 
-const today =
-new Date();
+  if(!dob)
+  return;
 
-if(dob > today){
+  const birth =
+  new Date(dob);
 
-document
-.getElementById("age")
-.value="";
+  const today =
+  new Date();
 
-return;
+  let age =
+  today.getFullYear()
+  -
+  birth.getFullYear();
 
-}
+  const month =
+  today.getMonth()
+  -
+  birth.getMonth();
 
-let age =
-today.getFullYear()
--
-dob.getFullYear();
+  if(
+    month < 0 ||
+    (
+      month === 0 &&
+      today.getDate() < birth.getDate()
+    )
+  ){
+    age--;
+  }
 
-const month =
-today.getMonth()
--
-dob.getMonth();
-
-if(
-month < 0 ||
-(
-month === 0 &&
-today.getDate()
-<
-dob.getDate()
-)
-){
-
-age--;
+  document
+  .getElementById("regAge")
+  .value =
+  age;
 
 }
-
-document
-.getElementById("age")
-.value=age;
-
-});
-
-
-/* =================================================
-   MOBILE / PINCODE
-================================================= */
-
-document
-.getElementById("mobile")
-.addEventListener(
-"input",
-function(){
-
-this.value =
-this.value.replace(/\D/g,"");
-
-});
-
-
-document
-.getElementById("pincode")
-.addEventListener(
-"input",
-function(){
-
-this.value =
-this.value.replace(/\D/g,"");
-
-});
 
 
 /* =================================================
    REGISTRATION
 ================================================= */
 
-async function registerCandidate(){
+async function registerCandidate(event){
 
-const btn =
-document.getElementById("registerBtn");
+  event.preventDefault();
 
-const message =
-document.getElementById("registerMessage");
+  const message =
+  document
+  .getElementById("registrationMessage");
 
+  message.style.display="none";
 
-const required = [
 
-"name",
-"fatherName",
-"dob",
-"gender",
-"category",
-"qualification",
-"mobile",
-"district",
-"state",
-"address"
+  const data = {
 
-];
+    name:
+    document.getElementById("regName").value,
 
+    fatherName:
+    document.getElementById("regFather").value,
 
-for(
-const id of required
-){
+    dob:
+    document.getElementById("regDob").value,
 
-const el =
-document.getElementById(id);
+    age:
+    document.getElementById("regAge").value,
 
-if(!el.value.trim()){
+    gender:
+    document.getElementById("regGender").value,
 
-el.focus();
+    category:
+    document.getElementById("regCategory").value,
 
-message.className =
-"message error";
+    qualification:
+    document.getElementById("regQualification").value,
 
-message.innerText =
-"कृपया सभी जरूरी जानकारी भरें।";
+    mobile:
+    document.getElementById("regMobile").value,
 
-return;
+    email:
+    document.getElementById("regEmail").value,
 
-}
+    address:
+    document.getElementById("regAddress").value,
 
-}
+    district:
+    document.getElementById("regDistrict").value,
 
+    state:
+    document.getElementById("regState").value,
 
-if(
-document
-.getElementById("mobile")
-.value.length !== 10
-){
+    pincode:
+    document.getElementById("regPincode").value
 
-message.className =
-"message error";
+  };
 
-message.innerText =
-"Mobile Number 10 digit का होना चाहिए।";
 
-return;
+  try{
 
-}
+    const response =
+    await fetch(
+      SCRIPT_URL,
+      {
+        method:"POST",
+        body:JSON.stringify(data)
+      }
+    );
 
 
-if(
-!document
-.getElementById("declaration")
-.checked
-){
+    const result =
+    await response.json();
 
-message.className =
-"message error";
 
-message.innerText =
-"कृपया declaration स्वीकार करें।";
+    if(result.success){
 
-return;
+      document
+      .getElementById("registrationForm")
+      .classList.add("hidden");
 
-}
 
+      document
+      .getElementById("credentials")
+      .classList.remove("hidden");
 
-btn.disabled=true;
 
-btn.innerText =
-"PROCESSING...";
+      document
+      .getElementById("registrationId")
+      .innerText =
+      result.registrationId;
 
 
-const data={
+      document
+      .getElementById("generatedLogin")
+      .innerText =
+      result.loginId;
 
-name:
-document.getElementById("name").value.trim(),
 
-fatherName:
-document.getElementById("fatherName").value.trim(),
+      document
+      .getElementById("generatedPassword")
+      .innerText =
+      result.password;
 
-dob:
-document.getElementById("dob").value,
+    }
 
-age:
-document.getElementById("age").value,
+    else{
 
-gender:
-document.getElementById("gender").value,
+      showMessage(
+        "registrationMessage",
+        result.message,
+        true
+      );
 
-category:
-document.getElementById("category").value,
+    }
 
-qualification:
-document.getElementById("qualification").value,
+  }
+  catch(error){
 
-mobile:
-document.getElementById("mobile").value.trim(),
+    showMessage(
+      "registrationMessage",
+      "Server connection error.",
+      true
+    );
 
-email:
-document.getElementById("email").value.trim(),
-
-address:
-document.getElementById("address").value.trim(),
-
-district:
-document.getElementById("district").value.trim(),
-
-state:
-document.getElementById("state").value,
-
-pincode:
-document.getElementById("pincode").value.trim()
-
-};
-
-
-try{
-
-const response =
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-body:JSON.stringify(data)
-}
-);
-
-
-const result =
-await response.json();
-
-
-if(!result.success){
-
-message.className =
-"message error";
-
-message.innerText =
-"❌ "+result.message;
-
-btn.disabled=false;
-
-btn.innerText =
-"REGISTER & CONTINUE →";
-
-return;
-
-}
-
-
-/* SAVE CREDENTIALS */
-
-savedLoginId =
-result.loginId;
-
-savedPassword =
-result.password;
-
-
-/* SHOW SUCCESS */
-
-hideAll();
-
-document
-.getElementById("successSection")
-.classList.remove("hidden");
-
-
-document
-.getElementById("heroTitle")
-.innerText =
-"Registration Successful";
-
-document
-.getElementById("heroText")
-.innerText =
-"Your Candidate Account is Ready";
-
-
-document
-.getElementById("successRegistration")
-.innerText =
-result.registrationId;
-
-
-document
-.getElementById("successLogin")
-.innerText =
-result.loginId;
-
-
-document
-.getElementById("successPassword")
-.innerText =
-result.password;
-
-}
-
-catch(error){
-
-console.error(error);
-
-message.className =
-"message error";
-
-message.innerText =
-"Connection error. फिर से प्रयास करें।";
-
-btn.disabled=false;
-
-btn.innerText =
-"REGISTER & CONTINUE →";
-
-}
-
-}
-
-
-/* =================================================
-   GO LOGIN WITH CREDENTIALS
-================================================= */
-
-function goToLoginWithCredentials(){
-
-hideAll();
-
-document
-.getElementById("loginSection")
-.classList.remove("hidden");
-
-
-document
-.getElementById("heroTitle")
-.innerText =
-"Candidate Login";
-
-
-document
-.getElementById("heroText")
-.innerText =
-"Secure Login Portal";
-
-
-document
-.getElementById("loginId")
-.value =
-savedLoginId;
-
-
-document
-.getElementById("password")
-.value =
-savedPassword;
-
-
-loadCaptcha();
+  }
 
 }
 
@@ -1665,60 +1727,46 @@ loadCaptcha();
 
 async function loadCaptcha(){
 
-const box =
-document.getElementById("captchaBox");
+  try{
 
-box.innerText =
-"Loading";
-
-
-try{
-
-const response =
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-body:JSON.stringify({
-action:"captcha"
-})
-}
-);
+    const response =
+    await fetch(
+      SCRIPT_URL,
+      {
+        method:"POST",
+        body:JSON.stringify({
+          action:"captcha"
+        })
+      }
+    );
 
 
-const result =
-await response.json();
+    const result =
+    await response.json();
 
 
-if(result.success){
+    if(result.success){
 
-captchaToken =
-result.token;
+      captchaToken =
+      result.token;
 
-box.innerText =
-result.captcha;
 
-document
-.getElementById("captcha")
-value = "";
+      document
+      .getElementById("captchaText")
+      .innerText =
+      result.captcha;
 
-}
+    }
 
-else{
+  }
+  catch(error){
 
-box.innerText =
-"ERROR";
+    document
+    .getElementById("captchaText")
+    .innerText =
+    "ERROR";
 
-}
-
-}
-
-catch(error){
-
-box.innerText =
-"ERROR";
-
-}
+  }
 
 }
 
@@ -1727,171 +1775,137 @@ box.innerText =
    LOGIN
 ================================================= */
 
-async function loginCandidate(){
+async function loginCandidate(event){
 
-const btn =
-document.getElementById("loginBtn");
-
-const message =
-document.getElementById("loginMessage");
+  event.preventDefault();
 
 
-const loginId =
-document
-.getElementById("loginId")
-.value
-.trim();
+  const data = {
+
+    action:"login",
+
+    loginId:
+    document
+    .getElementById("loginId")
+    .value,
+
+    password:
+    document
+    .getElementById("loginPassword")
+    .value,
+
+    captcha:
+    document
+    .getElementById("captchaInput")
+    .value,
+
+    captchaToken:
+    captchaToken
+
+  };
 
 
-const password =
-document
-.getElementById("password")
-.value
-.trim();
+  try{
+
+    const response =
+    await fetch(
+      SCRIPT_URL,
+      {
+        method:"POST",
+        body:JSON.stringify(data)
+      }
+    );
 
 
-const captcha =
-document
-.getElementById("captcha")
-.value
-.trim();
+    const result =
+    await response.json();
 
 
-if(
-!loginId ||
-!password ||
-!captcha
+    if(result.success){
+
+      loggedCandidate =
+      result;
+
+
+      document
+      .getElementById("candidateName")
+      .innerText =
+      result.name;
+
+
+      document
+      .getElementById("candidateRegistration")
+      .innerText =
+      result.registrationId;
+
+
+      document
+      .getElementById("headerUser")
+      .innerText =
+      result.name;
+
+
+      hideAll();
+
+
+      document
+      .getElementById("dashboardSection")
+      .classList.remove("hidden");
+
+    }
+
+    else{
+
+      showMessage(
+        "loginMessage",
+        result.message,
+        true
+      );
+
+      loadCaptcha();
+
+    }
+
+  }
+  catch(error){
+
+    showMessage(
+      "loginMessage",
+      "Server connection error.",
+      true
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   MESSAGE
+================================================= */
+
+function showMessage(
+  id,
+  text,
+  error=false
 ){
 
-message.className =
-"message error";
+  const box =
+  document.getElementById(id);
 
-message.innerText =
-"Login ID, Password और Captcha भरें।";
+  box.innerText =
+  text;
 
-return;
+  box.className =
+  "message " +
+  (
+    error
+    ? "error"
+    : "success-msg"
+  );
 
-}
-
-
-btn.disabled=true;
-
-btn.innerText =
-"VERIFYING...";
-
-
-try{
-
-const response =
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-
-body:JSON.stringify({
-
-action:"login",
-
-loginId:loginId,
-
-password:password,
-
-captcha:captcha,
-
-captchaToken:captchaToken
-
-})
-
-}
-);
-
-
-const result =
-await response.json();
-
-
-if(!result.success){
-
-message.className =
-"message error";
-
-message.innerText =
-"❌ "+result.message;
-
-btn.disabled=false;
-
-btn.innerText =
-"LOGIN & CONTINUE →";
-
-loadCaptcha();
-
-return;
-
-}
-
-
-/* LOGIN SUCCESS */
-
-hideAll();
-
-document
-.getElementById("dashboardSection")
-.classList.remove("hidden");
-
-
-document
-.getElementById("heroTitle")
-.innerText =
-"Candidate Dashboard";
-
-
-document
-.getElementById("heroText")
-.innerText =
-"Welcome to Examination Portal";
-
-
-document
-.getElementById("candidateName")
-.innerText =
-result.name;
-
-
-document
-.getElementById("dashboardRegistration")
-.innerText =
-result.registrationId;
-
-
-document
-.getElementById("dashboardLogin")
-.innerText =
-result.loginId;
-
-
-document
-.getElementById("dashboardQualification")
-.innerText =
-result.qualification;
-
-}
-
-catch(error){
-
-console.error(error);
-
-message.className =
-"message error";
-
-message.innerText =
-"Connection error. फिर से प्रयास करें।";
-
-btn.disabled=false;
-
-btn.innerText =
-"LOGIN & CONTINUE →";
-
-}
+  box.style.display =
+  "block";
 
 }
 
@@ -1902,11 +1916,431 @@ btn.innerText =
 
 function startExam(){
 
-alert(
-"Exam module अगले step में जोड़ा जाएगा।"
-);
+  hideAll();
+
+  document
+  .getElementById("examSection")
+  .classList.remove("hidden");
+
+
+  currentQuestion=0;
+
+  answers =
+  new Array(30).fill("");
+
+
+  remainingSeconds=600;
+
+  examSubmitting=false;
+
+
+  renderPalette();
+
+  renderQuestion();
+
+
+  clearInterval(timerInterval);
+
+  timerInterval =
+  setInterval(
+    updateTimer,
+    1000
+  );
 
 }
+
+
+/* =================================================
+   PALETTE
+================================================= */
+
+function renderPalette(){
+
+  const palette =
+  document
+  .getElementById("questionPalette");
+
+
+  let html="";
+
+
+  for(let i=0;i<30;i++){
+
+    let cls =
+    "palette-btn";
+
+    if(
+      answers[i] !== ""
+    ){
+      cls +=
+      " answered";
+    }
+
+    if(
+      i === currentQuestion
+    ){
+      cls +=
+      " active";
+    }
+
+
+    html +=
+
+    `<button
+      class="${cls}"
+      onclick="goToQuestion(${i})">
+      ${i+1}
+    </button>`;
+
+  }
+
+
+  palette.innerHTML =
+  html;
+
+}
+
+
+function goToQuestion(index){
+
+  currentQuestion =
+  index;
+
+  renderQuestion();
+
+  renderPalette();
+
+}
+
+
+/* =================================================
+   QUESTION
+================================================= */
+
+function renderQuestion(){
+
+  const q =
+  questions[currentQuestion];
+
+
+  let html =
+
+  `<div class="question-card">
+
+    <div class="question-title">
+
+      ${currentQuestion+1}.
+      ${q.q}
+
+    </div>`;
+
+
+  for(
+    let i=0;
+    i<q.a.length;
+    i++
+  ){
+
+    const letter =
+    String.fromCharCode(
+      65+i
+    );
+
+
+    const selected =
+    answers[currentQuestion]
+    ===
+    letter;
+
+
+    html +=
+
+    `<label
+      class="option ${selected ? "selected":""}">
+
+      <input
+        type="radio"
+        name="answer"
+        value="${letter}"
+        ${selected ? "checked":""}
+        onchange="saveAnswer('${letter}')">
+
+      <strong>${letter}.</strong>
+
+      ${q.a[i]}
+
+    </label>`;
+
+  }
+
+
+  html +=
+  `</div>`;
+
+
+  document
+  .getElementById("questionArea")
+  .innerHTML =
+  html;
+
+
+  document
+  .getElementById("previousBtn")
+  .disabled =
+  currentQuestion === 0;
+
+
+  document
+  .getElementById("nextBtn")
+  .disabled =
+  currentQuestion === 29;
+
+}
+
+
+/* =================================================
+   ANSWER
+================================================= */
+
+function saveAnswer(answer){
+
+  answers[currentQuestion] =
+  answer;
+
+  renderQuestion();
+
+  renderPalette();
+
+}
+
+
+/* =================================================
+   NEXT
+================================================= */
+
+function nextQuestion(){
+
+  if(
+    currentQuestion < 29
+  ){
+
+    currentQuestion++;
+
+    renderQuestion();
+
+    renderPalette();
+
+  }
+
+}
+
+
+/* =================================================
+   PREVIOUS
+================================================= */
+
+function previousQuestion(){
+
+  if(
+    currentQuestion > 0
+  ){
+
+    currentQuestion--;
+
+    renderQuestion();
+
+    renderPalette();
+
+  }
+
+}
+
+
+/* =================================================
+   TIMER
+================================================= */
+
+function updateTimer(){
+
+  remainingSeconds--;
+
+
+  const minutes =
+  Math.floor(
+    remainingSeconds/60
+  );
+
+
+  const seconds =
+  remainingSeconds%60;
+
+
+  document
+  .getElementById("timer")
+  .innerText =
+
+  String(minutes)
+  .padStart(2,"0")
+  +
+  ":"
+  +
+  String(seconds)
+  .padStart(2,"0");
+
+
+  if(
+    remainingSeconds <= 0
+  ){
+
+    clearInterval(
+      timerInterval
+    );
+
+    submitExam(true);
+
+  }
+
+}
+
+
+/* =================================================
+   SUBMIT
+================================================= */
+
+async function submitExam(autoSubmit){
+
+  if(examSubmitting)
+  return;
+
+
+  if(!autoSubmit){
+
+    const confirmSubmit =
+    confirm(
+      "क्या आप Exam Submit करना चाहते हैं?"
+    );
+
+
+    if(!confirmSubmit)
+    return;
+
+  }
+
+
+  examSubmitting=true;
+
+
+  clearInterval(
+    timerInterval
+  );
+
+
+  if(!loggedCandidate){
+
+    alert(
+      "Candidate Login नहीं है।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+    await fetch(
+      SCRIPT_URL,
+      {
+        method:"POST",
+
+        body:JSON.stringify({
+
+          action:"examSubmit",
+
+          loginId:
+          loggedCandidate.loginId,
+
+          answers:answers
+
+        })
+
+      }
+    );
+
+
+    const result =
+    await response.json();
+
+
+    if(result.success){
+
+      hideAll();
+
+
+      document
+      .getElementById("successSection")
+      .classList.remove("hidden");
+
+
+      document
+      .getElementById("headerUser")
+      .innerText =
+      loggedCandidate.name;
+
+    }
+
+    else{
+
+      alert(
+        result.message ||
+        "Exam submit नहीं हुआ।"
+      );
+
+      examSubmitting=false;
+
+    }
+
+  }
+  catch(error){
+
+    alert(
+      "Server connection error."
+    );
+
+    examSubmitting=false;
+
+  }
+
+}
+
+
+/* =================================================
+   LOGOUT
+================================================= */
+
+function logout(){
+
+  loggedCandidate=null;
+
+  clearInterval(
+    timerInterval
+  );
+
+  document
+  .getElementById("headerUser")
+  .innerText="";
+
+  showHome();
+
+}
+
+
+/* =================================================
+   INITIAL
+================================================= */
+
+showHome();
 
 </script>
 
