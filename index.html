@@ -3,422 +3,511 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Online Examination Portal</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-margin:0;
-font-family:Arial,"Noto Sans",sans-serif;
-background:
-radial-gradient(circle at top left,#dbeafe,transparent 35%),
-radial-gradient(circle at bottom right,#e0e7ff,transparent 35%),
-#eef2f7;
-color:#172033;
-min-height:100vh;
+  margin:0;
+  font-family:Arial,"Noto Sans",sans-serif;
+  background:
+  radial-gradient(circle at top left,#dbeafe,transparent 35%),
+  radial-gradient(circle at bottom right,#e0e7ff,transparent 35%),
+  #eef2f7;
+  color:#172033;
+  min-height:100vh;
 }
 
 .topbar{
-background:#0b1f3a;
-color:#fff;
-padding:14px 6%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-box-shadow:0 4px 15px rgba(0,0,0,.18);
+  background:#0b1f3a;
+  color:white;
+  padding:14px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.18);
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-width:45px;
-height:45px;
-border-radius:12px;
-background:linear-gradient(145deg,#2563eb,#1d4ed8);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:23px;
+  width:46px;
+  height:46px;
+  border-radius:13px;
+  background:linear-gradient(145deg,#2563eb,#1d4ed8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
 }
 
 .brand h2{
-margin:0;
-font-size:19px;
+  margin:0;
+  font-size:19px;
 }
 
 .brand span{
-font-size:12px;
-color:#cbd5e1;
+  font-size:12px;
+  color:#cbd5e1;
 }
 
 .wrapper{
-max-width:1050px;
-margin:35px auto;
-padding:0 18px;
+  max-width:1050px;
+  margin:35px auto;
+  padding:0 15px;
 }
 
 .card{
-background:#fff;
-border-radius:22px;
-overflow:hidden;
-box-shadow:0 20px 45px rgba(15,23,42,.15);
+  background:white;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(15,23,42,.15);
 }
 
 .hero{
-padding:30px 35px;
-background:linear-gradient(110deg,#0f3d75,#155eaa,#2563eb);
-color:white;
+  padding:35px;
+  text-align:center;
+  background:linear-gradient(110deg,#0f3d75,#155eaa,#2563eb);
+  color:white;
 }
 
 .hero h1{
-margin:0 0 7px;
-font-size:29px;
+  margin:0 0 8px;
+  font-size:30px;
 }
 
 .hero p{
-margin:0;
-color:#dbeafe;
-font-size:14px;
+  margin:0;
+  color:#dbeafe;
 }
 
 .content{
-padding:30px 35px 35px;
-}
-
-.section{
-margin-bottom:28px;
-}
-
-.section-title{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:20px;
-padding-bottom:11px;
-border-bottom:1px solid #e2e8f0;
-}
-
-.section-number{
-width:32px;
-height:32px;
-border-radius:9px;
-background:#eaf2ff;
-color:#1d4ed8;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.section-title h3{
-margin:0;
-font-size:17px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
-
-.full{
-grid-column:1/-1;
-}
-
-label{
-display:block;
-font-size:13px;
-font-weight:700;
-margin-bottom:7px;
-color:#334155;
-}
-
-.required{
-color:#dc2626;
-}
-
-input,select,textarea{
-width:100%;
-border:1px solid #cbd5e1;
-background:#fff;
-border-radius:10px;
-padding:12px 13px;
-font-size:14px;
-color:#172033;
-outline:none;
-}
-
-input:focus,select:focus,textarea:focus{
-border-color:#2563eb;
-box-shadow:0 0 0 3px rgba(37,99,235,.10);
-}
-
-textarea{
-min-height:90px;
-resize:vertical;
-}
-
-.readonly{
-background:#f8fafc;
-}
-
-.declaration{
-padding:15px 17px;
-background:#f8fafc;
-border:1px solid #e2e8f0;
-border-radius:11px;
-font-size:13px;
-line-height:1.6;
-}
-
-.declaration input{
-width:auto;
-margin-right:7px;
-}
-
-.primary-btn{
-width:100%;
-margin-top:22px;
-padding:15px;
-border:none;
-border-radius:11px;
-background:linear-gradient(135deg,#1d4ed8,#2563eb);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 6px 0 #173ea5;
-}
-
-.primary-btn:active{
-transform:translateY(4px);
-box-shadow:0 2px 0 #173ea5;
-}
-
-.primary-btn:disabled{
-opacity:.65;
-cursor:not-allowed;
+  padding:35px;
 }
 
 .hidden{
-display:none!important;
+  display:none!important;
 }
 
-.message{
-margin-top:20px;
-padding:18px;
-border-radius:13px;
-text-align:center;
+/* HOME */
+
+.home{
+  text-align:center;
 }
 
-.success{
-background:#ecfdf5;
-border:1px solid #a7f3d0;
-color:#065f46;
+.home-icon{
+  width:85px;
+  height:85px;
+  margin:0 auto 18px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#2563eb,#1d4ed8);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  box-shadow:0 12px 25px rgba(37,99,235,.28);
 }
 
-.error{
-background:#fef2f2;
-border:1px solid #fecaca;
-color:#991b1b;
+.home h2{
+  margin:0 0 8px;
+  font-size:27px;
 }
 
-.credentials{
-max-width:430px;
-margin:20px auto;
-background:#fff;
-border:1px solid #d1fae5;
-border-radius:14px;
-padding:18px;
+.home p{
+  color:#64748b;
+  margin-bottom:30px;
 }
 
-.credential-item{
-margin:10px 0;
-padding:12px;
-background:#f1f5f9;
-border-radius:9px;
+.option-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  max-width:720px;
+  margin:auto;
 }
 
-.credential-label{
-display:block;
-font-size:12px;
-color:#64748b;
+.option{
+  border:1px solid #dbe3ef;
+  border-radius:18px;
+  padding:28px 20px;
+  cursor:pointer;
+  background:#fff;
+  transition:.2s;
+  box-shadow:0 8px 20px rgba(15,23,42,.07);
 }
 
-.credential-value{
-font-size:19px;
-font-weight:bold;
-color:#1d4ed8;
-letter-spacing:1px;
+.option:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 28px rgba(15,23,42,.13);
 }
+
+.option-icon{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.option h3{
+  margin:0 0 7px;
+  font-size:20px;
+}
+
+.option p{
+  margin:0;
+  font-size:13px;
+  color:#64748b;
+}
+
+.registration-option{
+  border-top:5px solid #2563eb;
+}
+
+.login-option{
+  border-top:5px solid #059669;
+}
+
+/* FORMS */
+
+.section{
+  margin-bottom:28px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border-bottom:1px solid #e2e8f0;
+  padding-bottom:12px;
+  margin-bottom:20px;
+}
+
+.section-number{
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  background:#eaf2ff;
+  color:#1d4ed8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+
+.section-title h3{
+  margin:0;
+  font-size:17px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:7px;
+  color:#334155;
+}
+
+.required{
+  color:#dc2626;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  outline:none;
+  font-size:14px;
+  background:white;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.readonly{
+  background:#f8fafc;
+}
+
+.declaration{
+  background:#f8fafc;
+  padding:15px;
+  border:1px solid #e2e8f0;
+  border-radius:11px;
+  font-size:13px;
+}
+
+.declaration input{
+  width:auto;
+  margin-right:7px;
+}
+
+.primary-btn{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  border:none;
+  border-radius:11px;
+  background:linear-gradient(135deg,#1d4ed8,#2563eb);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 5px 0 #173ea5;
+}
+
+.primary-btn:active{
+  transform:translateY(3px);
+}
+
+.primary-btn:disabled{
+  opacity:.6;
+}
+
+.back-btn{
+  border:none;
+  background:#e2e8f0;
+  color:#334155;
+  padding:10px 17px;
+  border-radius:9px;
+  cursor:pointer;
+  margin-bottom:20px;
+  font-weight:bold;
+}
+
+/* LOGIN */
 
 .login-card{
-max-width:480px;
-margin:0 auto;
-padding:10px 0;
+  max-width:470px;
+  margin:auto;
 }
 
 .login-icon{
-width:65px;
-height:65px;
-margin:0 auto 14px;
-border-radius:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:31px;
-color:white;
-background:linear-gradient(145deg,#2563eb,#1d4ed8);
-box-shadow:0 10px 20px rgba(37,99,235,.25);
+  width:70px;
+  height:70px;
+  margin:0 auto 15px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#059669,#10b981);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
 }
 
 .login-title{
-text-align:center;
-font-size:25px;
-margin:0;
+  text-align:center;
+  margin:0;
+  font-size:26px;
 }
 
 .login-subtitle{
-text-align:center;
-color:#64748b;
-font-size:13px;
-margin:8px 0 24px;
+  text-align:center;
+  color:#64748b;
+  font-size:13px;
+  margin:8px 0 25px;
 }
 
 .captcha-row{
-display:flex;
-gap:10px;
-align-items:center;
+  display:flex;
+  gap:10px;
 }
 
 .captcha-box{
-height:47px;
-min-width:155px;
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-background:
-linear-gradient(135deg,#e0e7ff,#dbeafe);
-border-radius:9px;
-font-size:21px;
-font-weight:bold;
-letter-spacing:5px;
-color:#1e3a8a;
-user-select:none;
+  flex:1;
+  height:47px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#e0e7ff,#dbeafe);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:21px;
+  font-weight:bold;
+  letter-spacing:5px;
+  color:#1e3a8a;
 }
 
 .refresh{
-width:47px;
-height:47px;
-border:none;
-border-radius:9px;
-background:#e2e8f0;
-font-size:21px;
-cursor:pointer;
+  width:47px;
+  height:47px;
+  border:0;
+  border-radius:10px;
+  background:#e2e8f0;
+  font-size:21px;
+  cursor:pointer;
 }
 
+/* SUCCESS */
+
+.success-box{
+  max-width:500px;
+  margin:auto;
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  border-radius:15px;
+  padding:22px;
+  text-align:center;
+  color:#065f46;
+}
+
+.credential{
+  background:white;
+  margin:10px 0;
+  padding:12px;
+  border-radius:9px;
+  border:1px solid #d1fae5;
+}
+
+.credential small{
+  display:block;
+  color:#64748b;
+}
+
+.credential strong{
+  font-size:20px;
+  color:#1d4ed8;
+  letter-spacing:1px;
+}
+
+/* DASHBOARD */
+
 .dashboard{
-max-width:700px;
-margin:0 auto;
-text-align:center;
+  max-width:700px;
+  margin:auto;
+  text-align:center;
 }
 
 .welcome{
-font-size:27px;
-font-weight:bold;
-margin-bottom:8px;
+  font-size:27px;
+  font-weight:bold;
 }
 
 .dashboard-sub{
-color:#64748b;
-margin-bottom:25px;
+  color:#64748b;
+  margin:7px 0 25px;
 }
 
 .info-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:13px;
-text-align:left;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  text-align:left;
 }
 
 .info-box{
-background:#f8fafc;
-border:1px solid #e2e8f0;
-border-radius:11px;
-padding:15px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:11px;
+  padding:15px;
 }
 
 .info-label{
-font-size:11px;
-color:#64748b;
+  font-size:11px;
+  color:#64748b;
 }
 
 .info-value{
-font-weight:bold;
-margin-top:5px;
+  margin-top:5px;
+  font-weight:bold;
 }
 
 .start-btn{
-margin-top:25px;
-width:100%;
-padding:16px;
-border:none;
-border-radius:11px;
-background:linear-gradient(135deg,#059669,#10b981);
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 6px 0 #047857;
+  width:100%;
+  margin-top:25px;
+  padding:16px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#059669,#10b981);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 5px 0 #047857;
+}
+
+.message{
+  margin-top:18px;
+  padding:13px;
+  border-radius:10px;
+  text-align:center;
+  font-size:13px;
+}
+
+.error{
+  background:#fef2f2;
+  color:#991b1b;
+  border:1px solid #fecaca;
 }
 
 .footer{
-text-align:center;
-padding:18px;
-font-size:12px;
-color:#64748b;
+  text-align:center;
+  color:#64748b;
+  font-size:12px;
+  padding:18px;
 }
 
 @media(max-width:700px){
 
-.topbar{
-padding:12px 18px;
-}
+  .topbar{
+    padding:12px 18px;
+  }
 
-.wrapper{
-margin:15px auto;
-padding:0 10px;
-}
+  .brand h2{
+    font-size:15px;
+  }
 
-.hero{
-padding:24px 20px;
-}
+  .wrapper{
+    margin:15px auto;
+  }
 
-.hero h1{
-font-size:23px;
-}
+  .hero{
+    padding:25px 18px;
+  }
 
-.content{
-padding:23px 18px;
-}
+  .hero h1{
+    font-size:23px;
+  }
 
-.grid{
-grid-template-columns:1fr;
-}
+  .content{
+    padding:23px 18px;
+  }
 
-.full{
-grid-column:auto;
-}
+  .option-grid,
+  .grid,
+  .info-grid{
+    grid-template-columns:1fr;
+  }
 
-.info-grid{
-grid-template-columns:1fr;
-}
+  .full{
+    grid-column:auto;
+  }
 }
 </style>
 </head>
@@ -433,7 +522,7 @@ grid-template-columns:1fr;
 
 <div>
 <h2>Online Examination Portal</h2>
-<span>Candidate Registration & Login</span>
+<span>Secure Candidate Portal</span>
 </div>
 
 </div>
@@ -449,10 +538,12 @@ grid-template-columns:1fr;
 
 <div class="hero">
 
-<h1>Online Examination Portal</h1>
+<h1 id="heroTitle">
+Online Examination Portal
+</h1>
 
 <p id="heroText">
-Candidate Registration
+Registration & Candidate Login
 </p>
 
 </div>
@@ -461,9 +552,85 @@ Candidate Registration
 <div class="content">
 
 
+<!-- ================= HOME ================= -->
+
+<section id="homeSection">
+
+<div class="home">
+
+<div class="home-icon">
+🎓
+</div>
+
+<h2>Welcome Candidate</h2>
+
+<p>
+Please select an option to continue
+</p>
+
+
+<div class="option-grid">
+
+
+<div
+class="option registration-option"
+onclick="showRegistration()">
+
+<div class="option-icon">
+📝
+</div>
+
+<h3>
+NEW REGISTRATION
+</h3>
+
+<p>
+New candidate registration के लिए यहाँ क्लिक करें
+</p>
+
+</div>
+
+
+<div
+class="option login-option"
+onclick="showLogin()">
+
+<div class="option-icon">
+🔐
+</div>
+
+<h3>
+CANDIDATE LOGIN
+</h3>
+
+<p>
+पहले से registered candidates यहाँ Login करें
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
 <!-- ================= REGISTRATION ================= -->
 
-<section id="registrationSection">
+<section
+id="registrationSection"
+class="hidden">
+
+<button
+class="back-btn"
+onclick="showHome()">
+
+← Back to Home
+
+</button>
+
 
 <div class="section">
 
@@ -488,8 +655,7 @@ Candidate Name <span class="required">*</span>
 <input
 id="name"
 type="text"
-placeholder="Enter candidate name"
-required>
+placeholder="Enter candidate name">
 
 </div>
 
@@ -503,8 +669,7 @@ Father's Name <span class="required">*</span>
 <input
 id="fatherName"
 type="text"
-placeholder="Enter father's name"
-required>
+placeholder="Enter father's name">
 
 </div>
 
@@ -517,22 +682,23 @@ Date of Birth <span class="required">*</span>
 
 <input
 id="dob"
-type="date"
-required>
+type="date">
 
 </div>
 
 
 <div>
 
-<label>Age</label>
+<label>
+Age
+</label>
 
 <input
 id="age"
 class="readonly"
 type="number"
-placeholder="Auto calculated"
-readonly>
+readonly
+placeholder="Auto">
 
 </div>
 
@@ -543,7 +709,7 @@ readonly>
 Gender <span class="required">*</span>
 </label>
 
-<select id="gender" required>
+<select id="gender">
 
 <option value="">Select Gender</option>
 <option>Male</option>
@@ -561,7 +727,7 @@ Gender <span class="required">*</span>
 Category <span class="required">*</span>
 </label>
 
-<select id="category" required>
+<select id="category">
 
 <option value="">Select Category</option>
 <option>General</option>
@@ -591,13 +757,11 @@ Category <span class="required">*</span>
 </div>
 
 
-<div>
-
 <label>
 Highest Qualification <span class="required">*</span>
 </label>
 
-<select id="qualification" required>
+<select id="qualification">
 
 <option value="">Select Qualification</option>
 <option>10th</option>
@@ -607,8 +771,6 @@ Highest Qualification <span class="required">*</span>
 <option>Other</option>
 
 </select>
-
-</div>
 
 </div>
 
@@ -637,8 +799,7 @@ Mobile Number <span class="required">*</span>
 id="mobile"
 type="tel"
 maxlength="10"
-placeholder="10 digit mobile number"
-required>
+placeholder="10 digit mobile number">
 
 </div>
 
@@ -664,8 +825,7 @@ District <span class="required">*</span>
 <input
 id="district"
 type="text"
-placeholder="Enter district"
-required>
+placeholder="Enter district">
 
 </div>
 
@@ -676,7 +836,7 @@ required>
 State <span class="required">*</span>
 </label>
 
-<select id="state" required>
+<select id="state">
 
 <option value="">Select State</option>
 <option>Madhya Pradesh</option>
@@ -713,8 +873,7 @@ Full Address <span class="required">*</span>
 
 <textarea
 id="address"
-placeholder="Enter complete address"
-required></textarea>
+placeholder="Enter complete address"></textarea>
 
 </div>
 
@@ -729,8 +888,7 @@ required></textarea>
 
 <input
 id="declaration"
-type="checkbox"
-required>
+type="checkbox">
 
 मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई सभी जानकारी सही है।
 
@@ -742,7 +900,6 @@ required>
 <button
 id="registerBtn"
 class="primary-btn"
-type="button"
 onclick="registerCandidate()">
 
 REGISTER & CONTINUE →
@@ -757,25 +914,32 @@ REGISTER & CONTINUE →
 
 <!-- ================= LOGIN ================= -->
 
-<section id="loginSection" class="hidden">
+<section
+id="loginSection"
+class="hidden">
+
+<button
+class="back-btn"
+onclick="showHome()">
+
+← Back to Home
+
+</button>
+
 
 <div class="login-card">
 
-<div class="login-icon">🔐</div>
+<div class="login-icon">
+🔐
+</div>
 
 <h2 class="login-title">
 Candidate Login
 </h2>
 
 <p class="login-subtitle">
-Registration सफल है। अब अपनी Login ID और Password से Login करें।
+Login ID, Password और Captcha डालकर Login करें
 </p>
-
-
-<div
-id="credentialsBox"
-class="credentials">
-</div>
 
 
 <label>
@@ -785,8 +949,7 @@ Login ID
 <input
 id="loginId"
 type="text"
-placeholder="Enter Login ID"
-autocomplete="username">
+placeholder="Enter Login ID">
 
 
 <label>
@@ -796,8 +959,7 @@ Password
 <input
 id="password"
 type="password"
-placeholder="Enter Password"
-autocomplete="current-password">
+placeholder="Enter Password">
 
 
 <label>
@@ -811,13 +973,12 @@ Captcha
 id="captchaBox"
 class="captcha-box">
 
-Loading...
+-----
 
 </div>
 
 <button
 class="refresh"
-type="button"
 onclick="loadCaptcha()">
 
 ↻
@@ -830,14 +991,12 @@ onclick="loadCaptcha()">
 <input
 id="captcha"
 type="text"
-placeholder="Enter Captcha"
-autocomplete="off">
+placeholder="Enter Captcha">
 
 
 <button
 id="loginBtn"
 class="primary-btn"
-type="button"
 onclick="loginCandidate()">
 
 LOGIN & CONTINUE →
@@ -852,16 +1011,93 @@ LOGIN & CONTINUE →
 </section>
 
 
+<!-- ================= REGISTRATION SUCCESS ================= -->
+
+<section
+id="successSection"
+class="hidden">
+
+<div class="success-box">
+
+<h2>
+✓ Registration Successful
+</h2>
+
+<p>
+आपका registration सफलतापूर्वक हो गया है।
+</p>
+
+
+<div class="credential">
+
+<small>Registration ID</small>
+
+<strong id="successRegistration">
+-
+</strong>
+
+</div>
+
+
+<div class="credential">
+
+<small>Login ID</small>
+
+<strong id="successLogin">
+-
+</strong>
+
+</div>
+
+
+<div class="credential">
+
+<small>Password</small>
+
+<strong id="successPassword">
+-
+</strong>
+
+</div>
+
+
+<p style="font-size:12px;color:#64748b;">
+Login details सुरक्षित रखें।
+</p>
+
+
+<button
+class="primary-btn"
+onclick="goToLoginWithCredentials()">
+
+GO TO CANDIDATE LOGIN →
+
+</button>
+
+</div>
+
+</section>
+
+
 <!-- ================= DASHBOARD ================= -->
 
-<section id="dashboardSection" class="hidden">
+<section
+id="dashboardSection"
+class="hidden">
 
 <div class="dashboard">
 
-<div class="login-icon">🎓</div>
+<div class="login-icon">
+🎓
+</div>
 
 <div class="welcome">
-Welcome, <span id="candidateName"></span>
+
+Welcome,
+<span id="candidateName">
+Candidate
+</span>
+
 </div>
 
 <div class="dashboard-sub">
@@ -870,6 +1106,7 @@ Candidate Dashboard
 
 
 <div class="info-grid">
+
 
 <div class="info-box">
 
@@ -928,6 +1165,7 @@ Not Started
 
 </div>
 
+
 </div>
 
 
@@ -935,7 +1173,7 @@ Not Started
 class="start-btn"
 onclick="startExam()">
 
-START EXAM →
+▶ START EXAM
 
 </button>
 
@@ -950,17 +1188,15 @@ START EXAM →
 
 
 <div class="footer">
-
 © Online Examination Portal
-
 </div>
 
 
 <script>
 
-/* ==================================================
-   GOOGLE APPS SCRIPT URL
-================================================== */
+/* =================================================
+   APPS SCRIPT URL
+================================================= */
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbyJteCHijq9NPIg6jhWf7HByMoCOmoHSDM0v1B8VLGAZSReG8bgOZ8uuoeQBOD_lq_kdA/exec";
@@ -968,40 +1204,138 @@ const SCRIPT_URL =
 
 let captchaToken = "";
 
+let savedLoginId = "";
 
-/* ==================================================
+let savedPassword = "";
+
+
+/* =================================================
+   SHOW SECTION
+================================================= */
+
+function hideAll(){
+
+document
+.querySelectorAll(
+"#homeSection,#registrationSection,#loginSection,#successSection,#dashboardSection"
+)
+.forEach(function(section){
+
+section.classList.add("hidden");
+
+});
+
+}
+
+
+function showHome(){
+
+hideAll();
+
+document
+.getElementById("homeSection")
+.classList.remove("hidden");
+
+document
+.getElementById("heroTitle")
+.innerText =
+"Online Examination Portal";
+
+document
+.getElementById("heroText")
+.innerText =
+"Registration & Candidate Login";
+
+}
+
+
+function showRegistration(){
+
+hideAll();
+
+document
+.getElementById("registrationSection")
+.classList.remove("hidden");
+
+document
+.getElementById("heroTitle")
+.innerText =
+"Candidate Registration";
+
+document
+.getElementById("heroText")
+.innerText =
+"New Candidate Registration";
+
+}
+
+
+function showLogin(){
+
+hideAll();
+
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
+
+document
+.getElementById("heroTitle")
+.innerText =
+"Candidate Login";
+
+document
+.getElementById("heroText")
+.innerText =
+"Secure Login Portal";
+
+loadCaptcha();
+
+}
+
+
+/* =================================================
    AGE
-================================================== */
+================================================= */
 
 document
 .getElementById("dob")
-.addEventListener("change",function(){
+.addEventListener(
+"change",
+function(){
 
-const dob = new Date(this.value);
+const dob =
+new Date(this.value);
 
-const today = new Date();
+const today =
+new Date();
 
 if(dob > today){
 
-document.getElementById("age").value="";
+document
+.getElementById("age")
+.value="";
 
 return;
 
 }
 
 let age =
-today.getFullYear() -
+today.getFullYear()
+-
 dob.getFullYear();
 
 const month =
-today.getMonth() -
+today.getMonth()
+-
 dob.getMonth();
 
 if(
 month < 0 ||
 (
 month === 0 &&
-today.getDate() < dob.getDate()
+today.getDate()
+<
+dob.getDate()
 )
 ){
 
@@ -1009,18 +1343,22 @@ age--;
 
 }
 
-document.getElementById("age").value = age;
+document
+.getElementById("age")
+.value=age;
 
 });
 
 
-/* ==================================================
+/* =================================================
    MOBILE / PINCODE
-================================================== */
+================================================= */
 
 document
 .getElementById("mobile")
-.addEventListener("input",function(){
+.addEventListener(
+"input",
+function(){
 
 this.value =
 this.value.replace(/\D/g,"");
@@ -1030,7 +1368,9 @@ this.value.replace(/\D/g,"");
 
 document
 .getElementById("pincode")
-.addEventListener("input",function(){
+.addEventListener(
+"input",
+function(){
 
 this.value =
 this.value.replace(/\D/g,"");
@@ -1038,9 +1378,9 @@ this.value.replace(/\D/g,"");
 });
 
 
-/* ==================================================
+/* =================================================
    REGISTRATION
-================================================== */
+================================================= */
 
 async function registerCandidate(){
 
@@ -1051,7 +1391,7 @@ const message =
 document.getElementById("registerMessage");
 
 
-const requiredIds = [
+const required = [
 
 "name",
 "fatherName",
@@ -1067,14 +1407,16 @@ const requiredIds = [
 ];
 
 
-for(const id of requiredIds){
+for(
+const id of required
+){
 
-const element =
+const el =
 document.getElementById(id);
 
-if(!element.value.trim()){
+if(!el.value.trim()){
 
-element.focus();
+el.focus();
 
 message.className =
 "message error";
@@ -1123,20 +1465,13 @@ return;
 }
 
 
-btn.disabled = true;
+btn.disabled=true;
 
 btn.innerText =
-"REGISTRATION PROCESSING...";
+"PROCESSING...";
 
 
-message.className =
-"message";
-
-message.innerText =
-"Registration हो रहा है...";
-
-
-const data = {
+const data={
 
 name:
 document.getElementById("name").value.trim(),
@@ -1186,11 +1521,8 @@ const response =
 await fetch(
 SCRIPT_URL,
 {
-
 method:"POST",
-
 body:JSON.stringify(data)
-
 }
 );
 
@@ -1205,9 +1537,9 @@ message.className =
 "message error";
 
 message.innerText =
-"❌ " + result.message;
+"❌ "+result.message;
 
-btn.disabled = false;
+btn.disabled=false;
 
 btn.innerText =
 "REGISTER & CONTINUE →";
@@ -1217,95 +1549,53 @@ return;
 }
 
 
-/* ==============================
-   REGISTRATION SUCCESS
-============================== */
+/* SAVE CREDENTIALS */
+
+savedLoginId =
+result.loginId;
+
+savedPassword =
+result.password;
+
+
+/* SHOW SUCCESS */
+
+hideAll();
 
 document
-.getElementById("registrationSection")
-.classList.add("hidden");
-
-
-document
-.getElementById("loginSection")
+.getElementById("successSection")
 .classList.remove("hidden");
 
 
 document
+.getElementById("heroTitle")
+.innerText =
+"Registration Successful";
+
+document
 .getElementById("heroText")
 .innerText =
-"Registration Successful — Candidate Login";
+"Your Candidate Account is Ready";
 
 
 document
-.getElementById("credentialsBox")
-.innerHTML = `
+.getElementById("successRegistration")
+.innerText =
+result.registrationId;
 
-<div style="text-align:center;margin-bottom:12px;color:#065f46;font-weight:bold;">
-✓ Registration Successful
-</div>
-
-<div class="credential-item">
-
-<span class="credential-label">
-Registration ID
-</span>
-
-<span class="credential-value">
-${result.registrationId}
-</span>
-
-</div>
-
-<div class="credential-item">
-
-<span class="credential-label">
-Login ID
-</span>
-
-<span class="credential-value">
-${result.loginId}
-</span>
-
-</div>
-
-<div class="credential-item">
-
-<span class="credential-label">
-Password
-</span>
-
-<span class="credential-value">
-${result.password}
-</span>
-
-</div>
-
-<div style="font-size:12px;color:#64748b;text-align:center;margin-top:12px;">
-इन Login Details को सुरक्षित रखें।
-</div>
-
-`;
-
-
-/* AUTO FILL LOGIN */
 
 document
-.getElementById("loginId")
-.value =
+.getElementById("successLogin")
+.innerText =
 result.loginId;
 
 
 document
-.getElementById("password")
-.value =
+.getElementById("successPassword")
+.innerText =
 result.password;
 
-
-loadCaptcha();
-
 }
-
 
 catch(error){
 
@@ -1315,9 +1605,9 @@ message.className =
 "message error";
 
 message.innerText =
-"Connection error. कृपया दोबारा प्रयास करें।";
+"Connection error. फिर से प्रयास करें।";
 
-btn.disabled = false;
+btn.disabled=false;
 
 btn.innerText =
 "REGISTER & CONTINUE →";
@@ -1327,9 +1617,51 @@ btn.innerText =
 }
 
 
-/* ==================================================
+/* =================================================
+   GO LOGIN WITH CREDENTIALS
+================================================= */
+
+function goToLoginWithCredentials(){
+
+hideAll();
+
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
+
+
+document
+.getElementById("heroTitle")
+.innerText =
+"Candidate Login";
+
+
+document
+.getElementById("heroText")
+.innerText =
+"Secure Login Portal";
+
+
+document
+.getElementById("loginId")
+.value =
+savedLoginId;
+
+
+document
+.getElementById("password")
+.value =
+savedPassword;
+
+
+loadCaptcha();
+
+}
+
+
+/* =================================================
    CAPTCHA
-================================================== */
+================================================= */
 
 async function loadCaptcha(){
 
@@ -1337,7 +1669,7 @@ const box =
 document.getElementById("captchaBox");
 
 box.innerText =
-"Loading...";
+"Loading";
 
 
 try{
@@ -1346,15 +1678,10 @@ const response =
 await fetch(
 SCRIPT_URL,
 {
-
 method:"POST",
-
 body:JSON.stringify({
-
 action:"captcha"
-
 })
-
 }
 );
 
@@ -1373,7 +1700,7 @@ result.captcha;
 
 document
 .getElementById("captcha")
-.value = "";
+value = "";
 
 }
 
@@ -1396,9 +1723,9 @@ box.innerText =
 }
 
 
-/* ==================================================
+/* =================================================
    LOGIN
-================================================== */
+================================================= */
 
 async function loginCandidate(){
 
@@ -1412,22 +1739,29 @@ document.getElementById("loginMessage");
 const loginId =
 document
 .getElementById("loginId")
-.value.trim();
+.value
+.trim();
 
 
 const password =
 document
 .getElementById("password")
-.value;
+.value
+.trim();
 
 
 const captcha =
 document
 .getElementById("captcha")
-.value.trim();
+.value
+.trim();
 
 
-if(!loginId || !password || !captcha){
+if(
+!loginId ||
+!password ||
+!captcha
+){
 
 message.className =
 "message error";
@@ -1440,17 +1774,10 @@ return;
 }
 
 
-btn.disabled = true;
+btn.disabled=true;
 
 btn.innerText =
 "VERIFYING...";
-
-
-message.className =
-"message";
-
-message.innerText =
-"Login verify हो रहा है...";
 
 
 try{
@@ -1459,7 +1786,6 @@ const response =
 await fetch(
 SCRIPT_URL,
 {
-
 method:"POST",
 
 body:JSON.stringify({
@@ -1490,9 +1816,9 @@ message.className =
 "message error";
 
 message.innerText =
-"❌ " + result.message;
+"❌ "+result.message;
 
-btn.disabled = false;
+btn.disabled=false;
 
 btn.innerText =
 "LOGIN & CONTINUE →";
@@ -1504,14 +1830,9 @@ return;
 }
 
 
-/* ==============================
-   LOGIN SUCCESS
-============================== */
+/* LOGIN SUCCESS */
 
-document
-.getElementById("loginSection")
-.classList.add("hidden");
-
+hideAll();
 
 document
 .getElementById("dashboardSection")
@@ -1519,9 +1840,15 @@ document
 
 
 document
-.getElementById("heroText")
+.getElementById("heroTitle")
 .innerText =
 "Candidate Dashboard";
+
+
+document
+.getElementById("heroText")
+.innerText =
+"Welcome to Examination Portal";
 
 
 document
@@ -1547,9 +1874,7 @@ document
 .innerText =
 result.qualification;
 
-
 }
-
 
 catch(error){
 
@@ -1559,7 +1884,7 @@ message.className =
 "message error";
 
 message.innerText =
-"Connection error. कृपया फिर से कोशिश करें।";
+"Connection error. फिर से प्रयास करें।";
 
 btn.disabled=false;
 
@@ -1571,14 +1896,14 @@ btn.innerText =
 }
 
 
-/* ==================================================
+/* =================================================
    START EXAM
-================================================== */
+================================================= */
 
 function startExam(){
 
 alert(
-"Exam module अभी तैयार किया जा रहा है।"
+"Exam module अगले step में जोड़ा जाएगा।"
 );
 
 }
